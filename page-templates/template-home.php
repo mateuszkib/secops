@@ -82,12 +82,15 @@ get_header();
             </div>
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel1.jpg" class="news__img-card card-img-top" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel2.jpg" class="news__img-card card-img-top" width="300" height="250" />
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div>
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" /><span>08.08.2020</span> <span>Jan Kowalski</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date">08.08.2020</span>
+                            </div>
+                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan Kowalski</span>
                         </div>
                     </div>
                 </div>
@@ -98,14 +101,93 @@ get_header();
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <div>
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" /><span>08.08.2020</span> <span>Jan Kowalski</span>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date">08.08.2020</span>
+                            </div>
+                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan Kowalski</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
+<section class="events">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h2 class="events__header text-center">Nadchodzące eventy</h2>
+            </div>
+            <div class="col-8 offset-2 mt-3">
+                <p class="events__description"><?php
+                                                if (get_field('text_events')) {
+                                                    the_field('text_events');
+                                                }
+                                                ?></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 bg-white rounded">
+                <div class="row p-5">
+                    <div class="col-6">
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <div>
+                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <h2 class="events__header-box">SecOps Online MeetUp #11</h2>
+                        <p class="events__content-box-big">It ensures that they are kept up to date on any
+                            developments and changes made to the structure or...</p>
+                    </div>
+                    <div class="col-6 mt-4">
+                        <a href=""><button class="events__button-check">Sprawdź</button></a>
+                    </div>
+                    <div class="col-6 mt-4 d-flex justify-content-end">
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="col-12">
+                    <div class="row bg-white p-5">
+                        <div class="col-6">
+                            <h2 class="events__header-box">
+                                SecOps Online MeetUp #10
+                            </h2>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <div>
+                                <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-4">
+                            <a href=""><button class="events__button-check">Sprawdź</button></a>
+                        </div>
+                        <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
+                    </div>
+                    <div class="row bg-white p-5 mt-5">
+                        <div class="col-6">
+                            <h2 class="events__header-box">
+                                SecOps Online MeetUp #10
+                            </h2>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <div>
+                                <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                            </div>
+                        </div>
+                        <div class="col-6 mt-4">
+                            <a href=""><button class="events__button-check">Sprawdź</button></a>
+                        </div>
+                        <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </section>
 <?php
 get_footer();
