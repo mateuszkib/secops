@@ -69,6 +69,9 @@ get_header();
     </div>
 </div>
 </header>
+<div class="bg">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" />
+</div>
 <section class="news">
     <div class="container">
         <div class="row">
@@ -81,31 +84,41 @@ get_header();
 
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel2.jpg" class="news__img-card card-img-top" width="300" height="250" />
+                <div class="card">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel2.jpg"
+                        class="news__img-card card-img-top" width="300" height="250" />
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of
+                            the card's content.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date">08.08.2020</span>
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg"
+                                    width="20" /><span class="card__date">08.08.2020</span>
                             </div>
-                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan Kowalski</span>
+                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan
+                                Kowalski</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel2.jpg" class="news__img-card card-img-top" width="300" height="250" />
+                <div class="card">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/pexel2.jpg"
+                        class="news__img-card card-img-top" width="300" height="250" />
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                            of
+                            the card's content.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date">08.08.2020</span>
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg"
+                                    width="20" /><span class="card__date">08.08.2020</span>
                             </div>
-                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan Kowalski</span>
+                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20'); ?>Jan
+                                Kowalski</span>
                         </div>
                     </div>
                 </div>
@@ -135,7 +148,9 @@ get_header();
                     </div>
                     <div class="col-6 d-flex justify-content-end">
                         <div>
-                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                            <span class="events__button-date button d-flex align-items-center w-60"><img
+                                    src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
+                                    class="mr-2" width="15" />18.06.2020</span>
                         </div>
                     </div>
                     <div class="col-12 mt-5">
@@ -161,13 +176,16 @@ get_header();
                         </div>
                         <div class="col-6 d-flex justify-content-end">
                             <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                                <span class="events__button-date button d-flex align-items-center w-60"><img
+                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
+                                        class="mr-2" width="15" />18.06.2020</span>
                             </div>
                         </div>
                         <div class="col-6 mt-4">
                             <a href=""><button class="events__button-check">Sprawdź</button></a>
                         </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
+                        <div class="col-6 mt-4 d-flex justify-content-end"><img
+                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
                     </div>
                     <div class="row bg-white p-5 mt-5">
                         <div class="col-6">
@@ -177,18 +195,63 @@ get_header();
                         </div>
                         <div class="col-6 d-flex justify-content-end">
                             <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" />18.06.2020</span>
+                                <span class="events__button-date button d-flex align-items-center w-60"><img
+                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
+                                        class="mr-2" width="15" />18.06.2020</span>
                             </div>
                         </div>
                         <div class="col-6 mt-4">
                             <a href=""><button class="events__button-check">Sprawdź</button></a>
                         </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
+                        <div class="col-6 mt-4 d-flex justify-content-end"><img
+                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href=""><button class="button events__button-all-events">Wszystkie eventy</button></a>
+            </div>
+        </div>
 </section>
+<section class="sponsors-carousel">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="sponsors-carousel__header">Nasi sponsorzy:</h2>
+            </div>
+            <div class="col-12 pl-0">
+                <div class="sponsors-carousel__owl owl-carousel owl-theme owl-loaded bg-white">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                            <?php
+                            $sponsors = get_field('carousel_sponsors');
+                            foreach ($sponsors as $sponsor) {
+                            ?>
+                            <div class="owl-item">
+                                <a href="<?php echo $sponsor['sponsor']['caption']; ?>"><img
+                                        src="<?php echo $sponsor['sponsor']['url']; ?>" class="sponsors-carousel__img"
+                                        alt="<?php echo $sponsor['sponsor']['alt']; ?>" /></a>
+                            </div>
+                            <?php            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="line-break">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 line-break__border">
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php
 get_footer();
 ?>

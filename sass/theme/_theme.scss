@@ -5,6 +5,13 @@
 	font-family: "Poppins", sans-serif;
 }
 
+@mixin headerStyles {
+	font-family: "Poppins", sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 32px;
+}
+
 body {
 	background: $primary;
 	font-family: "Roboto", sans-serif;
@@ -18,6 +25,7 @@ body {
 	color: $white;
 }
 
+/* NAVBAR SCSS */
 #wrapper-navbar {
 	height: 96px;
 	padding-top: 96px;
@@ -74,7 +82,8 @@ body {
 	}
 }
 
-.header-bg {
+/* HEADER SCSS */
+.page-id-11 .header-bg {
 	background-image: url("../images/header_bg.png");
 	background-position: center center; /* Center the image */
 	background-repeat: no-repeat; /* Do not repeat the image */
@@ -132,6 +141,7 @@ body {
 	}
 }
 
+/* HOME SCSS */
 .news {
 	margin-top: 200px;
 
@@ -230,10 +240,7 @@ body {
 	}
 
 	&__header-box {
-		@include addFontPoppins();
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 32px;
+		@include headerStyles();
 		color: $dark;
 	}
 
@@ -254,5 +261,123 @@ body {
 		font-size: 14px;
 		line-height: 21px;
 		color: $dark;
+	}
+
+	&__button-all-events {
+		padding: 20px 32px;
+		margin-top: 72px;
+	}
+}
+
+.sponsors-carousel {
+	margin-top: 150px;
+
+	&__header {
+		@include headerStyles();
+		color: $white;
+	}
+
+	&__owl {
+		padding: 50px;
+		border-radius: 10px;
+		margin-top: 66px;
+	}
+
+	&__img {
+		max-height: 41px;
+		width: auto !important;
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.line-break {
+	margin-top: 169px;
+
+	&__border {
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+}
+
+/* FOOTER SCSS */
+.footer {
+	margin-top: 100px;
+	color: $white;
+
+	.widget-title {
+		@include addFontPoppins();
+		font-weight: bold;
+		font-size: 16px;
+	}
+
+	.footer-list {
+		list-style: none;
+
+		li {
+			&:first-child {
+				margin-top: 37px;
+			}
+
+			&:not(:first-child) {
+				margin-top: 15px;
+			}
+			a {
+				color: $white;
+				line-height: 24px;
+			}
+		}
+	}
+
+	.widget_media_image {
+		display: inline-block;
+
+		&:not(:last-child) {
+			margin-right: 26px;
+		}
+	}
+
+	.footer-social-icons {
+		.widget_media_image {
+			margin-top: 35px;
+		}
+	}
+
+	&__first-column-paragraph {
+		margin-top: 90px;
+		color: $primary-text;
+		line-height: 32px;
+	}
+}
+
+/* ABOUT PAGE SCSS */
+.about {
+	margin-top: 200px;
+
+	&__header-container {
+		margin-bottom: 64px;
+	}
+
+	&__header {
+		@include addFontPoppins();
+		font-weight: bold;
+		font-size: 40px;
+		line-height: 48px;
+		letter-spacing: -0.02em;
+		color: $white;
+	}
+
+	&__header-info {
+		@include addFontPoppins();
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 24px;
+		color: $white;
+		margin: 16px 0;
+	}
+
+	&__header-info-desc {
+		font-size: 14px;
+		line-height: 22px;
+		color: $primary-text;
 	}
 }

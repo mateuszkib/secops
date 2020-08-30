@@ -27,7 +27,9 @@
     "url": "https://github.com/understrap/understrap/issues"
   },
   "homepage": "https://understrap.com",
-  "dependencies": {},
+  "dependencies": {
+    "owl.carousel": "^2.3.4"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
