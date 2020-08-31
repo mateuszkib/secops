@@ -25,6 +25,10 @@ body {
 	color: $white;
 }
 
+.header {
+	@include addFontPoppins();
+}
+
 /* NAVBAR SCSS */
 #wrapper-navbar {
 	height: 96px;
@@ -99,7 +103,6 @@ body {
 	}
 
 	&__span {
-		@include addFontPoppins();
 		font-size: 65px;
 		letter-spacing: 35px;
 		margin-top: -35px;
@@ -123,7 +126,6 @@ body {
 	}
 
 	&__who-header {
-		@include addFontPoppins();
 		height: 48px;
 		font-size: 40px;
 		line-height: 48px;
@@ -147,7 +149,6 @@ body {
 
 	&__header {
 		height: 48px;
-		@include addFontPoppins();
 		font-weight: bold;
 		font-size: 40px;
 		line-height: 48px;
@@ -198,7 +199,6 @@ body {
 }
 
 .card-title {
-	@include addFontPoppins();
 	line-height: 28px;
 	font-weight: bold;
 	font-size: 20px;
@@ -217,7 +217,6 @@ body {
 	margin-top: 200px;
 
 	&__header {
-		@include addFontPoppins();
 		font-weight: bold;
 		font-size: 40px;
 		line-height: 48px;
@@ -350,7 +349,7 @@ body {
 }
 
 /* ABOUT PAGE SCSS */
-.about {
+.meetups {
 	margin-top: 200px;
 
 	&__header-container {
@@ -358,7 +357,6 @@ body {
 	}
 
 	&__header {
-		@include addFontPoppins();
 		font-weight: bold;
 		font-size: 40px;
 		line-height: 48px;
@@ -367,7 +365,6 @@ body {
 	}
 
 	&__header-info {
-		@include addFontPoppins();
 		font-weight: bold;
 		font-size: 16px;
 		line-height: 24px;
@@ -380,4 +377,70 @@ body {
 		line-height: 22px;
 		color: $primary-text;
 	}
+}
+
+.community {
+	margin-top: 150px;
+
+	&__header-left {
+		&:not(:first-child) {
+			margin-top: 51px;
+		}
+		font-weight: bold;
+		font-size: 48px;
+		line-height: 64px;
+		color: $primary-text;
+		letter-spacing: -0.02em;
+		position: relative;
+		padding-left: 42px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__header-left--active {
+		color: $white;
+	}
+
+	&__header-left-span {
+		font-weight: bold;
+		font-size: 25px;
+		line-height: 35px;
+		color: $primary-text;
+		position: absolute;
+		opacity: 0.25;
+		top: 0;
+		left: 0;
+	}
+
+	&__header-left-span--active {
+		color: $purple;
+		opacity: 1;
+	}
+
+	&__header-right {
+		font-weight: bold;
+		font-size: 32px;
+		line-height: 40px;
+		color: $white;
+		margin: 42px 0 24px 0;
+	}
+
+	&__desc-right {
+		font-size: 18px;
+		line-height: 32px;
+		color: $primary-text;
+	}
+
+	&__button {
+		@include addFontPoppins();
+		padding: 20px 32px;
+		font-size: 14px;
+	}
+}
+
+.who-we-are {
+	color: $white;
+	margin-top: 150px;
 }
