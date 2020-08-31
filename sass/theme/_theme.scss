@@ -444,3 +444,62 @@ body {
 	color: $white;
 	margin-top: 150px;
 }
+
+.join-us-box {
+	background: $white;
+	border-radius: 10px;
+	margin-top: 150px;
+
+	> .row {
+		padding: 72px 0;
+	}
+
+	&__header {
+		font-weight: bold;
+		line-height: 48px;
+		color: $dark;
+	}
+
+	&__desc {
+		font-size: 14px;
+		line-height: 170%;
+		color: $dark;
+		opacity: 0.7;
+		margin: 24px 0 32px 0;
+	}
+
+	&__button {
+		@include addFontPoppins();
+		padding: 20px 32px;
+		background: $white;
+		border: 2px solid rgba(9, 16, 30, 0.15);
+		border-radius: 99px;
+		font-size: 14px;
+		font-weight: bold;
+	}
+}
+
+.info-about-training {
+	margin: 150px 0;
+
+	&__header {
+		font-weight: bold;
+		font-size: 40px;
+		line-height: 48px;
+		color: $white;
+	}
+
+	&__desc {
+		line-height: 32px;
+		color: $primary-text;
+		margin: 48px 0 84px 0;
+	}
+
+	&__button {
+		padding: 20px 32px;
+	}
+
+	&__image-box {
+		margin-left: 131px;
+	}
+}
