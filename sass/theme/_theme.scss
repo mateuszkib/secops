@@ -503,3 +503,36 @@ body {
 		margin-left: 131px;
 	}
 }
+
+/* EVENTS PAGE SCSS */
+.events-page {
+	&__header {
+		font-size: 40px;
+		color: $white;
+		margin-top: 107px;
+	}
+
+	&__list-group {
+		list-style: none;
+		color: $primary-text;
+	}
+
+	&__list-item {
+		margin-right: 50px;
+	}
+
+	&__current,
+	&__past {
+		max-width: 552px;
+	}
+
+	&__past {
+		&--dark-purple-bg {
+			background: #0c0434;
+		}
+
+		&--white-color-header {
+			color: $white;
+		}
+	}
+}

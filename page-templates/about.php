@@ -15,11 +15,12 @@ get_header();
 
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid position-relative">
+    <div class="w-100">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" style="right: 0; top: 32%;" />
+    </div>
     <section class="meetups">
-
         <div class="row ">
-
             <div class="col-6">
                 <div class="row">
                     <div class="col-6 offset-3 meetups__header-container">
@@ -59,8 +60,7 @@ get_header();
                     </div>
                 </div>
             </div>
-            <div class="col-6"
-                style="background: url('<?php echo get_template_directory_uri(); ?>/images/ilustracja_bg.svg') no-repeat bottom center; background-size: cover;">
+            <div class="col-6" style="background: url('<?php echo get_template_directory_uri(); ?>/images/ilustracja_bg.svg') no-repeat bottom center; background-size: cover;">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
             </div>
 
@@ -84,10 +84,8 @@ get_header();
                     <span class="header community__header-left-span community__header-left-span--active">01</span>
                     Społeczność
                 </h2>
-                <h2 class="header community__header-left" data-target="collapse-second"><span
-                        class="header community__header-left-span">02</span> Partnerzy</h2>
-                <h2 class="header community__header-left" data-target="collapse-third"><span
-                        class="header community__header-left-span">03</span> Sponsorzy</h2>
+                <h2 class="header community__header-left" data-target="collapse-second"><span class="header community__header-left-span">02</span> Partnerzy</h2>
+                <h2 class="header community__header-left" data-target="collapse-third"><span class="header community__header-left-span">03</span> Sponsorzy</h2>
 
             </div>
             <div class="col-3 offset-1">
@@ -152,8 +150,7 @@ get_header();
                             ultrices
                             morbi.</p>
                     </div>
-                    <div class="col-3 offset-1 text-center"><img
-                            src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                    <div class="col-3 offset-1 text-center"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
                     </div>
                     <div class="col-6"><a href=""><button class="join-us-box__button">Dołącz teraz</button></a></div>
                 </div>
@@ -171,8 +168,7 @@ get_header();
                             ultrices
                             morbi.</p>
                     </div>
-                    <div class="col-3 offset-1 text-center"><img
-                            src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                    <div class="col-3 offset-1 text-center"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
                     </div>
                     <div class="col-6"><a href=""><button class="join-us-box__button">Dołącz teraz</button></a></div>
                 </div>
@@ -192,8 +188,7 @@ get_header();
                     <a href="#"><button class="button info-about-training__button">Sprawdź nasze szkolenia</button></a>
                 </div>
                 <div class="col-5 info-about-training__image-box">
-                    <img
-                        src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_infoonaszychszkoleniach.png" />
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_infoonaszychszkoleniach.png" />
                 </div>
             </div>
         </div>
