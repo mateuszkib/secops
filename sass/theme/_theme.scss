@@ -29,6 +29,18 @@ body {
 	@include addFontPoppins();
 }
 
+.header-events-page {
+	@include addFontPoppins();
+	font-weight: bold;
+	font-size: 40px;
+	line-height: 48px;
+	color: $white;
+}
+
+.desc {
+	line-height: 32px;
+	color: $primary-text;
+}
 /* NAVBAR SCSS */
 #wrapper-navbar {
 	height: 96px;
@@ -505,16 +517,23 @@ body {
 }
 
 /* EVENTS PAGE SCSS */
+.current-meetup,
+.past-meetup,
+.partners-meetup,
+.become-sponsor {
+	margin-top: 150px;
+}
+
 .events-page {
 	&__header {
 		font-size: 40px;
 		color: $white;
-		margin-top: 107px;
 	}
 
 	&__list-group {
 		list-style: none;
 		color: $primary-text;
+		margin-bottom: 50px;
 	}
 
 	&__list-item {
@@ -534,5 +553,55 @@ body {
 		&--white-color-header {
 			color: $white;
 		}
+
+		&--content-color {
+			color: $primary-text;
+		}
+
+		&--button-bg {
+			background: #0c0434;
+			color: $white;
+			border: 2px solid #493e70;
+		}
+	}
+
+	&__partner-event-box {
+		height: 400px;
+		background: $white;
+		border-radius: 10px;
+		@include addFontPoppins();
+	}
+
+	&__partner-event-image {
+		display: inline-block;
+		margin: 80px 60px 65px 60px;
+	}
+
+	&__partner-event-title {
+		font-weight: bold;
+		font-size: 20px;
+		line-height: 28px;
+		color: $dark;
+		margin: 0 20px;
+	}
+
+	&__partner-event-desc {
+		font-size: 14px;
+		line-height: 170%;
+		color: $grey;
+		margin: 16px 0 32px 0;
+	}
+
+	&__partner-event-button {
+		margin: 0 68px;
+	}
+
+	&__become-sponsor-desc {
+		margin-top: 40px;
+	}
+
+	&__become-sponsor-btn {
+		padding: 20px 32px;
+		margin-top: 52px;
 	}
 }
