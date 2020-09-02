@@ -29,7 +29,7 @@ body {
 	@include addFontPoppins();
 }
 
-.header-events-page {
+.header-section-page {
 	@include addFontPoppins();
 	font-weight: bold;
 	font-size: 40px;
@@ -188,7 +188,7 @@ body {
 
 .card {
 	&__date {
-		color: $dates-color;
+		color: $orange;
 		font-size: 13px;
 		@include addFontPoppins();
 		font-weight: bold;
@@ -603,5 +603,57 @@ body {
 	&__become-sponsor-btn {
 		padding: 20px 32px;
 		margin-top: 52px;
+	}
+}
+
+/* OFFERS JOBS SCSS */
+.current-jobs-offers {
+	margin-top: 150px;
+
+	&__become-sponsor {
+		background: $darker;
+		border-radius: 10px;
+		padding: 30px;
+	}
+
+	&__header {
+		color: $dark;
+
+		&--sponsor {
+			color: $white;
+		}
+	}
+
+	&__button {
+		padding: 20px 32px;
+	}
+
+	&__offer-container {
+		background: $white;
+		padding: 30px;
+		border-radius: 10px;
+	}
+
+	&__span {
+		padding: 8px 16px;
+		background: $orange;
+		border-radius: 99px;
+		font-size: 13px;
+		font-weight: bold;
+		@include addFontPoppins();
+		color: $white;
+	}
+
+	&__line {
+		width: 100%;
+		border: 1px solid #535862;
+		opacity: 0.15;
+	}
+
+	&__list-item {
+		@include addFontPoppins();
+		font-size: 14px;
+		margin-bottom: 16px;
+		color: $grey;
 	}
 }
