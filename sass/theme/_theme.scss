@@ -18,6 +18,52 @@ body {
 	font-size: 16px;
 }
 
+.sponsors-carousel,
+.community,
+.who-we-are,
+.join-us-box,
+.info-about-training,
+.current-meetup,
+.past-meetup,
+.partners-meetup,
+.become-sponsor,
+.current-jobs-offers,
+.our-speakers,
+.events-films {
+	margin-top: 150px;
+}
+
+.input-container {
+	&::before {
+		content: url("../images/search.svg");
+		position: absolute;
+		right: 25px;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.input,
+.select {
+	background: none;
+	border: 2px solid $primary-text;
+	opacity: 0.35;
+	border-radius: 99px;
+	padding: 16px 32px;
+	display: inline-block;
+	color: $primary-text;
+
+	&::placeholder {
+		color: $primary-text;
+		@include addFontPoppins();
+		font-size: 14px;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
 .button {
 	background: $button-bg;
 	border-radius: 99px;
@@ -281,8 +327,6 @@ body {
 }
 
 .sponsors-carousel {
-	margin-top: 150px;
-
 	&__header {
 		@include headerStyles();
 		color: $white;
@@ -392,8 +436,6 @@ body {
 }
 
 .community {
-	margin-top: 150px;
-
 	&__header-left {
 		&:not(:first-child) {
 			margin-top: 51px;
@@ -454,13 +496,11 @@ body {
 
 .who-we-are {
 	color: $white;
-	margin-top: 150px;
 }
 
 .join-us-box {
 	background: $white;
 	border-radius: 10px;
-	margin-top: 150px;
 
 	> .row {
 		padding: 72px 0;
@@ -492,8 +532,6 @@ body {
 }
 
 .info-about-training {
-	margin: 150px 0;
-
 	&__header {
 		font-weight: bold;
 		font-size: 40px;
@@ -517,13 +555,6 @@ body {
 }
 
 /* EVENTS PAGE SCSS */
-.current-meetup,
-.past-meetup,
-.partners-meetup,
-.become-sponsor {
-	margin-top: 150px;
-}
-
 .events-page {
 	&__header {
 		font-size: 40px;
@@ -608,8 +639,6 @@ body {
 
 /* OFFERS JOBS SCSS */
 .current-jobs-offers {
-	margin-top: 150px;
-
 	&__become-sponsor {
 		background: $darker;
 		border-radius: 10px;
@@ -682,35 +711,6 @@ body {
 }
 
 /*MULTIMEDIA PAGE SCSS */
-.our-speakers {
-	margin-top: 150px;
-
-	&__input-container {
-		&::before {
-			content: url("../images/search.svg");
-			position: absolute;
-			right: 25px;
-			top: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
-
-	&__input {
-		background: none;
-		border: 2px solid $primary-text;
-		opacity: 0.35;
-		border-radius: 99px;
-		padding: 16px 32px;
-		display: inline-block;
-
-		&::placeholder {
-			color: $primary-text;
-			@include addFontPoppins();
-			font-size: 14px;
-		}
-	}
-}
-
 .flip-card {
 	background-color: transparent;
 	width: 100%;
@@ -763,5 +763,27 @@ body {
 
 	&__body {
 		font-size: 14px;
+	}
+}
+
+.multimedia {
+	&__select {
+		color: $primary-text;
+		background-image: url("../images/arrow_down_pink.svg");
+		background-repeat: no-repeat, repeat;
+		/* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+		background-position: right 0.7em top 50%, 0 0;
+		/* icon size, then gradient */
+		background-size: 1em auto, 100%;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+}
+
+.multimedia {
+	&__title-event {
+		font-size: 20px;
+		color: $white;
 	}
 }

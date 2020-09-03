@@ -21,7 +21,7 @@ if (is_front_page()) {
 
 <div class="wrapper" id="full-width-page-wrapper">
 
-    <div class="<?php echo esc_attr($container); ?>" id="multimedia">
+    <div class="<?php echo esc_attr($container); ?> multimedia" id="multimedia">
 
         <section class="our-speakers">
             <div class="row">
@@ -29,8 +29,8 @@ if (is_front_page()) {
                     <h2 class="header header-section-page">Nasi prelegenci</h2>
                 </div>
                 <div class="col-6 text-right">
-                    <div class="our-speakers__input-container">
-                        <input type="text" name="speaker" class="our-speakers__input" placeholder="Znajdź prelegenta" />
+                    <div class="input-container">
+                        <input type="text" name="speaker" class="input" placeholder="Znajdź prelegenta" />
                     </div>
                 </div>
             </div>
@@ -39,8 +39,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -58,10 +57,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -73,8 +70,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -92,10 +88,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -107,8 +101,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -126,10 +119,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -141,8 +132,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -160,10 +150,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -175,8 +163,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -194,10 +181,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -209,8 +194,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -228,10 +212,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -243,8 +225,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -262,10 +243,8 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
 
                                 </div>
@@ -277,8 +256,7 @@ if (is_front_page()) {
                     <div class="flip-card">
                         <div class="flip-card__inner">
                             <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png"
-                                    class="our-speakers__image" alt="Avatar">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
                             </div>
                             <div class="flip-card__back p-3">
                                 <div class="row">
@@ -296,20 +274,86 @@ if (is_front_page()) {
                                         </p>
                                     </div>
                                     <div class="col-12">
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img
-                                            src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
-
-    </div><!-- #content -->
+        <section class="events-films">
+            <div class="row mb-5">
+                <div class="col-6">
+                    <h2 class="header header-section-page">Filmy z eventów</h2>
+                </div>
+                <div class="col-3 text-right">
+                    <div class="input-container">
+                        <input type="text" name="film" class="input" placeholder="Znajdź film" />
+                    </div>
+                </div>
+                <div class="col-3 text-right">
+                    <div class="select-container">
+                        <select class="select multimedia__select w-100">
+                            <option selected disabled>Wybierz miasto</option>
+                            <option>Warszawa</option>
+                            <option>Poznań</option>
+                            <option>Lublin</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="multimedia__card-event">
+                        <div class="multimedia__image-container">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/event-film.png" class="multimedia__image" alt="Avatar">
+                        </div>
+                        <div class="multimedia__title-event-container mt-3">
+                            <h3 class="header multimedia__title-event">Gdańsk MeetUp #13</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="events-gallery mt-5">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="header header-section-page">Galeria z eventów</h2>
+                </div>
+                <div class="col-3 text-right">
+                    <div class="input-container">
+                        <input type="text" name="film" class="input" placeholder="Znajdź film" />
+                    </div>
+                </div>
+                <div class="col-3 text-right">
+                    <div class="select-container">
+                        <select class="select multimedia__select w-100">
+                            <option selected disabled>Wybierz miasto</option>
+                            <option>Warszawa</option>
+                            <option>Poznań</option>
+                            <option>Lublin</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-3">
+                    <div class="multimedia__card">
+                        <div class="multimedia__image-container">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/event-film.png" class="multimedia__image" alt="Avatar">
+                        </div>
+                        <div class="multimedia__title-event-container mt-3">
+                            <h3 class="header multimedia__title-event">Gdańsk MeetUp #13</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div><!-- #content -->
 
 </div><!-- #full-width-page-wrapper -->
 
