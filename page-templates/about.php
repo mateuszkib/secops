@@ -17,7 +17,8 @@ get_header();
 
 <div class="container-fluid position-relative">
     <div class="w-100">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" style="right: 0; top: 32%;" />
+        <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute"
+            style="right: 0; top: 32%;" />
     </div>
     <section class="meetups">
         <div class="row ">
@@ -26,41 +27,24 @@ get_header();
                     <div class="col-6 offset-3 meetups__header-container">
                         <h2 class="header meetups__header">Informacje o MeetUpach</h2>
                     </div>
-                    <div class="col-3 offset-3">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/Squares.svg" /></div>
-                        <h2 class="header meetups__header-info">Pierwsza informacja</h2>
-                        <p class="meetups__header-info-desc">Massa hendrerit fermentum
-                            accumsan, lectus. Volutpat in
-                            at nisl pulvinar aenean et
-                            lacus, sollicitudin nunc. Eget.</p>
+
+                    <?php
+
+                    $information = get_field('info_about_meetup');
+                    foreach ($information as $key => $info) { ?>
+                    <div class="col-3 meetups__column mb-3">
+                        <div><img src="<?php echo $info['image']['url']; ?>" />
+                        </div>
+                        <h2 class="header meetups__header-info"><?php echo $info['title']; ?></h2>
+                        <p class="meetups__header-info-desc"><?php echo $info['content']; ?></p>
                     </div>
-                    <div class="col-3">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/Bright.svg" /></div>
-                        <h2 class="header meetups__header-info">Pierwsza informacja</h2>
-                        <p class="meetups__header-info-desc">Massa hendrerit fermentum
-                            accumsan, lectus. Volutpat in
-                            at nisl pulvinar aenean et
-                            lacus, sollicitudin nunc. Eget.</p>
-                    </div>
-                    <div class="col-3 offset-3 mt-3">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/Contrast.svg" /></div>
-                        <h2 class="header meetups__header-info">Pierwsza informacja</h2>
-                        <p class="meetups__header-info-desc">Massa hendrerit fermentum
-                            accumsan, lectus. Volutpat in
-                            at nisl pulvinar aenean et
-                            lacus, sollicitudin nunc. Eget.</p>
-                    </div>
-                    <div class="col-3 mt-3">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/Signal.svg" /></div>
-                        <h2 class="header meetups__header-info">Pierwsza informacja</h2>
-                        <p class="meetups__header-info-desc">Massa hendrerit fermentum
-                            accumsan, lectus. Volutpat in
-                            at nisl pulvinar aenean et
-                            lacus, sollicitudin nunc. Eget.</p>
-                    </div>
+
+                    <?php } ?>
+                    ?>
                 </div>
             </div>
-            <div class="col-6" style="background: url('<?php echo get_template_directory_uri(); ?>/images/ilustracja_bg.svg') no-repeat bottom center; background-size: cover;">
+            <div class="col-6"
+                style="background: url('<?php echo get_template_directory_uri(); ?>/images/ilustracja_bg.svg') no-repeat bottom center; background-size: cover;">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
             </div>
 
@@ -84,34 +68,42 @@ get_header();
                     <span class="header community__header-left-span community__header-left-span--active">01</span>
                     Społeczność
                 </h2>
-                <h2 class="header community__header-left" data-target="collapse-second"><span class="header community__header-left-span">02</span> Partnerzy</h2>
-                <h2 class="header community__header-left" data-target="collapse-third"><span class="header community__header-left-span">03</span> Sponsorzy</h2>
+                <h2 class="header community__header-left" data-target="collapse-second"><span
+                        class="header community__header-left-span">02</span> Partnerzy</h2>
+                <h2 class="header community__header-left" data-target="collapse-third"><span
+                        class="header community__header-left-span">03</span> Sponsorzy</h2>
 
             </div>
             <div class="col-3 offset-1">
                 <div class="community-section my-collapse collapse-first our_community">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/ikona_nasza_spolecznosc.svg" />
                     <h3 class="header community__header-right">Nasza społeczność</h3>
-                    <p class="community__desc-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Senectus
-                        laoreet tincidunt ipsum vel sit amet, id etiam. Mauris non sagittis sit semper et pellentesque
-                        faucibus. Amet faucibus augue pretium ultrices odio. Sed sed massa etiam arcu donec felis.
-                        Platea.</p>
+                    <p class="community__desc-right">
+                        <?php
+                        (get_field('our_community')) ?
+                            the_field('our_community') :
+                            ""; ?>
+                    </p>
                 </div>
                 <div class="partners-section my-collapse collapse-second our_partners d-none">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/ikona_nasi_partnerzy.svg" />
                     <h3 class="header community__header-right">Nasi partnerzy</h3>
-                    <p class="community__desc-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Senectus
-                        laoreet tincidunt ipsum vel sit amet, id etiam. Mauris non sagittis sit semper et pellentesque
-                        faucibus. Amet faucibus augue pretium ultrices odio. Sed sed massa etiam arcu donec felis.
-                        Platea.</p>
+                    <p class="community__desc-right">
+                        <?php
+                        (get_field('our_partners')) ?
+                            the_field('our_partners') :
+                            ""; ?>
+                    </p>
                 </div>
                 <div class="sponsors-section my-collapse collapse-third our_sponsors d-none">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/ikona_nasi_sponsorzy.svg" />
                     <h3 class="header community__header-right">Nasi sponsorzy</h3>
-                    <p class="community__desc-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Senectus
-                        laoreet tincidunt ipsum vel sit amet, id etiam. Mauris non sagittis sit semper et pellentesque
-                        faucibus. Amet faucibus augue pretium ultrices odio. Sed sed massa etiam arcu donec felis.
-                        Platea.</p>
+                    <p class="community__desc-right">
+                        <?php
+                        (get_field('our_sponsors')) ?
+                            the_field('our_sponsors') :
+                            ""; ?>
+                    </p>
                 </div>
             </div>
             <div class="col-4 offset-2 mt-5">
@@ -125,70 +117,65 @@ get_header();
                 <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_kimjestesmy.png" />
             </div>
             <div class="col-3 offset-1">
-                <h2 class="header home-header__who-header">Kim jesteśmy?</h2>
-                <p class="home-header__who-text"><?php
-                                                    if (get_field('who_we_are')) {
-                                                        the_field('who_we_are');
-                                                    }
-                                                    ?></p>
-                <button class="button home-header__who-button">Nasze eventy</button>
+                <h2 class="header home-header__who-header">
+                    <?php (get_field('who_title') ? the_field('who_title') : "");  ?></h2>
+                <p class="home-header__who-text"><?php (get_field('who_content') ? the_field('who_content') : ""); ?>
+                </p>
+                <?php
+                (get_field('who_button') ? the_field('who_button') : "");
+                ?>
             </div>
         </div>
     </section>
     <section class="join-us">
         <div class="row">
-            <div class="col-4 offset-2 join-us-box mr-5">
+
+            <?php
+
+            $joinUsBoxes = get_field('join_us_box');
+            if (have_rows('join_us_box')) :
+
+                $i = 0;
+                while (have_rows('join_us_box')) : the_row(); ?>
+
+            <div class="col-4 <?= ($i == 0) ? 'offset-2' : ''; ?> join-us-box mr-5">
                 <div class="row">
                     <div class="col-3 offset-1 text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/fb_big.svg" />
+                        <?php $image = get_sub_field('image'); ?>
+                        <img src="<?php echo $image["url"]; ?>" />
                     </div>
                     <div class="col-6">
-                        <h2 class="header join-us-box__header">Dołącz do nas na Facebooku</h2>
+                        <h2 class="header join-us-box__header"><?php the_sub_field('title'); ?></h2>
                     </div>
                     <div class="col-6 offset-4">
-                        <p class="join-us-box__desc">Tempor massa tellus quis vel morbi. Imperdiet ornare cursus
-                            ultrices
-                            morbi.</p>
+                        <p class="join-us-box__desc"><?php the_sub_field('content'); ?></p>
                     </div>
-                    <div class="col-3 offset-1 text-center"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                    <div class="col-3 offset-1 text-center"><img
+                            src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
                     </div>
-                    <div class="col-6"><a href=""><button class="join-us-box__button">Dołącz teraz</button></a></div>
+                    <div class="col-6"><?php the_sub_field('join_link'); ?></div>
                 </div>
             </div>
-            <div class="col-4 join-us-box">
-                <div class="row">
-                    <div class="col-3 offset-1 text-center">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/linkedin_big.svg" />
-                    </div>
-                    <div class="col-6">
-                        <h2 class="header join-us-box__header">Dołącz do nas na Linkedin</h2>
-                    </div>
-                    <div class="col-6 offset-4">
-                        <p class="join-us-box__desc">Tempor massa tellus quis vel morbi. Imperdiet ornare cursus
-                            ultrices
-                            morbi.</p>
-                    </div>
-                    <div class="col-3 offset-1 text-center"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                    </div>
-                    <div class="col-6"><a href=""><button class="join-us-box__button">Dołącz teraz</button></a></div>
-                </div>
-            </div>
+
+            <?php $i++;
+                endwhile;
+
+            endif;
+            ?>
+
         </div>
     </section>
     <section class="info-about-training">
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    <h2 class="header info-about-training__header">Informacje o naszych szkoleniach</h2>
-                    <p class="info-about-training__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                        ante
-                        tortor orci semper quam. Dapibus
-                        aliquet aenean velit luctus nullam phasellus facilisis. Tincidunt neque in etiam eget sed magna.
-                    </p>
-                    <a href="#"><button class="button info-about-training__button">Sprawdź nasze szkolenia</button></a>
+                    <h2 class="header info-about-training__header"><?php the_field('info_title'); ?></h2>
+                    <p class="info-about-training__desc"><?php the_field('info_content'); ?></p>
+                    <?php the_field('info_button'); ?>
                 </div>
                 <div class="col-5 info-about-training__image-box">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_infoonaszychszkoleniach.png" />
+                    <img
+                        src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_infoonaszychszkoleniach.png" />
                 </div>
             </div>
         </div>

@@ -303,7 +303,6 @@ body {
 
 	&__content-box-big {
 		color: $grey;
-		width: 90%;
 		line-height: 32px;
 	}
 
@@ -420,6 +419,13 @@ body {
 		color: $white;
 	}
 
+	&__column {
+		&:nth-of-type(2),
+		&:nth-of-type(4) {
+			margin-left: 25%;
+		}
+	}
+
 	&__header-info {
 		font-weight: bold;
 		font-size: 16px;
@@ -532,6 +538,8 @@ body {
 }
 
 .info-about-training {
+	margin-bottom: 150px;
+
 	&__header {
 		font-weight: bold;
 		font-size: 40px;
