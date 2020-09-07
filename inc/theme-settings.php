@@ -50,25 +50,44 @@ if (!function_exists('understrap_get_theme_default_settings')) {
 }
 
 if (function_exists('acf_add_options_page')) {
-    // Adds ACF Pro options page for Global Options
-    $globalOptions = acf_add_options_page(array(
-        'page_title'  => 'Global Options',
-        'menu_title' => 'Global Options',
-        'menu_slug'  => 'global-options',
-        'capability' => 'edit_posts',
-        'redirect'  => false
+    acf_add_options_page(array(
+        'page_title' => 'Theme Options',
+        'menu_title' => 'Theme Options',
+        'menu_slug' => 'theme-options',
+        'compatibility' => 'edit_posts',
+        'parent_slug' => ”,
+        'position' => '3',
+        'icon_url' => 'dashicons-admin-generic'
     ));
 
-    // Adds ACF Pro sub options page for Header
     acf_add_options_sub_page(array(
-        'page_title'  => 'Header Settings',
-        'menu_title'  => 'Header',
-        'parent_slug'   => $globalOptions['menu_slug'],
+        'page_title' => 'Image Settings',
+        'menu_title' => 'Image Settings',
+        'menu_slug' => 'theme-options-image',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'theme-options',
+        'position' => false,
+        'icon_url' => false,
+
     ));
-    // Adds ACF Pro sub options page for Footer
+
     acf_add_options_sub_page(array(
-        'page_title'  => 'Footer Settings',
-        'menu_title'  => 'Footer',
-        'parent_slug'   => $globalOptions['menu_slug'],
+        'page_title' => 'Ads',
+        'menu_title' => 'Ads',
+        'menu_slug' => 'theme-options-ad',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'theme-options',
+        'position' => false,
+        'icon_url' => false,
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' => 'Theme Images',
+        'menu_title' => 'Theme Images',
+        'menu_slug' => 'theme-options-images',
+        'compatibility' => 'edit_posts',
+        'parent_slug' => 'theme-options',
+        'position' => false,
+        'icon_url' => false,
     ));
 }

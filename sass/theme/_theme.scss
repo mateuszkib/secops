@@ -579,6 +579,15 @@ body {
 		margin-right: 50px;
 	}
 
+	&__list-link {
+		color: $primary-text;
+
+		&:hover {
+			color: $primary-text;
+			opacity: 0.5;
+		}
+	}
+
 	&__current,
 	&__past {
 		max-width: 552px;
