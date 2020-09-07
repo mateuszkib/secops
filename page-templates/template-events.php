@@ -17,6 +17,17 @@ $container = get_theme_mod('understrap_container_type');
 if (is_front_page()) {
     get_template_part('global-templates/hero');
 }
+
+function displayLocations()
+{
+    $args = [
+        'post_type' => 'city',
+        'post_per_page' => '-1'
+    ];
+    $locations = new WP_Query($args);
+
+    return $locations;
+}
 ?>
 
 <div class="wrapper" id="full-width-page-wrapper">
@@ -29,9 +40,50 @@ if (is_front_page()) {
                     <h2 class="header events-page__header">Aktualne MeetUpy</h2>
                 </div>
 
+                <?php
+                $today = date('Ymd');
+                $events = new WP_Query([
+                    'post_type' => 'event',
+                    'post_per_page' => 4,
+                    'orderby' => 'meta_value_num',
+                    'meta_key' => 'event_date_start',
+                    'order' => 'ASC',
+                    'meta_query' => array(
+                        array(
+                            'key' => 'event_date_start',
+                            'value' => $today,
+                            'compare' => '>=',
+                            'type' => 'numeric'
+                        ), array(
+                            'key' => 'related_cities',
+                            'compare' => 'LIKE',
+                            'value' => "93"
+                        )
+                    )
+                ]);
+
+                wp_reset_postdata();
+                ?>
+
                 <div class="col-12 mt-5">
                     <div class="events-page__city-list-container">
                         <ul class="events-page__list-group d-flex align-items-center justify-content-center">
+
+                            <?php
+
+                            // $args = [
+                            //     'post_type' => 'city',
+                            //     'post_per_page' => '-1'
+                            // ];
+                            $locations = new WP_Query([]);
+
+                            while ($locations->have_posts()) {
+                                $locations->the_post();
+                                the_field('title');
+                            }
+
+
+                            ?>
                             <li class="events-page__list-item">Online</li>
                             <li class="events-page__list-item">Warszawa</li>
                             <li class="events-page__list-item">Kraków</li>
