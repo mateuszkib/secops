@@ -14,16 +14,19 @@ defined('ABSPATH') || exit;
 get_header();
 $container = get_theme_mod('understrap_container_type');
 
-$cityID = 0;
-$parameters = ['currentCity', 'pastCity', 'partnersCity'];
-
-foreach ($parameters as $parametr) {
-    if (isset($_GET[$parametr])) {
-        $post = get_page_by_title($_GET[$parametr], '', 'city');
+function getCityID($parametr)
+{
+    $defaultCityID = 93;
+    if ($_GET[$parametr]) {
+        $post = get_page_by_path($_GET[$parametr], '', 'city');
         $cityID = $post->ID;
+    } else {
+        $cityID = $defaultCityID;
     }
+
+    return $cityID;
 }
-$defaultCityID = 93;
+
 
 if (is_front_page()) {
     get_template_part('global-templates/hero');
@@ -74,6 +77,7 @@ function displayLocations($kindEvent)
                 </div>
 
                 <?php
+
                 $today = date('Ymd');
                 $currentEvents = new WP_Query([
                     'post_type' => 'event',
@@ -90,7 +94,7 @@ function displayLocations($kindEvent)
                         ), array(
                             'key' => 'related_cities',
                             'compare' => 'LIKE',
-                            'value' => '"' . ($cityID) ? $cityID : $defaultCityID . '"'
+                            'value' => '"' . getCityID("currentCity") . '"'
                         )
                     )
                 ]);
@@ -258,7 +262,7 @@ function displayLocations($kindEvent)
                         ), array(
                             'key' => 'related_cities',
                             'compare' => 'LIKE',
-                            'value' => '"' . ($cityID) ? $cityID : $defaultCityID  . '"'
+                            'value' => '"' . getCityID("pastCity") . '"'
                         )
                     )
                 ]);
@@ -403,6 +407,7 @@ function displayLocations($kindEvent)
                     </div>
                 </div>
                 <?php
+
                 $eventsPartners = new WP_Query([
                     'post_type' => 'event-partners',
                     'post_per_page' => 4,
@@ -418,7 +423,7 @@ function displayLocations($kindEvent)
                         ), array(
                             'key' => 'related_cities',
                             'compare' => 'LIKE',
-                            'value' => '"' . ($cityID) ? $cityID : $defaultCityID  . '"'
+                            'value' => '"' .  getCityID("partnersCity") . '"'
                         )
                     )
                 ]);

@@ -24,7 +24,7 @@ if (is_front_page()) {
     <div class="<?php echo esc_attr($container); ?> multimedia" id="multimedia">
 
         <section class="our-speakers">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-6">
                     <h2 class="header header-section-page">Nasi prelegenci</h2>
                 </div>
@@ -36,7 +36,6 @@ if (is_front_page()) {
             </div>
             <div class="row">
 
-
                 <?php
                 $speakers = new WP_Query([
                     'post_type' => 'speaker',
@@ -46,51 +45,70 @@ if (is_front_page()) {
                     while ($speakers->have_posts()) {
                         $speakers->the_post(); ?>
 
-                        <div class="col-3">
-                            <div class="flip-card">
-                                <div class="flip-card__inner">
-                                    <div class="flip-card__front">
-                                        <img src="<?php the_field('speaker_image'); ?>" class="our-speakers__image h-100 w-100" alt="Avatar">
+                <div class="col-3">
+                    <div class="flip-card">
+                        <div class="flip-card__inner">
+                            <div class="flip-card__front">
+                                <img src="<?php the_field('speaker_image'); ?>" class="our-speakers__image h-100 w-100"
+                                    alt="Avatar">
+                            </div>
+                            <div class="flip-card__back p-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="flip-card__profession"><?php the_field('speaker_profession'); ?></h4>
                                     </div>
-                                    <div class="flip-card__back p-3">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4 class="flip-card__profession"><?php the_field('speaker_profession'); ?></h4>
-                                            </div>
-                                            <div class="col-12">
-                                                <h3 class="header flip-card__name"><?php the_title(); ?></h3>
-                                            </div>
-                                            <div class="col-12">
-                                                <p class="flip-card__body"><?php the_field('speaker_description'); ?></p>
-                                                </p>
-                                            </div>
-                                            <div class="col-12">
-                                                <?php
+                                    <div class="col-12">
+                                        <h3 class="header flip-card__name"><?php the_title(); ?></h3>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="flip-card__body"><?php the_field('speaker_description'); ?></p>
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
+                                        <?php
 
                                                 if (get_field('speaker_social_media')) {
                                                     $socialIcons = get_field('speaker_social_media');
                                                     foreach ($socialIcons as $icon) { ?>
-                                                        <a href="<?php echo $icon['social_image_link']; ?>">
-                                                            <img src="<?php echo $icon['social_image']; ?>" />
-                                                        </a>
-                                                <?php  }
+                                        <a href="<?php echo $icon['social_image_link']; ?>">
+                                            <img src="<?php echo $icon['social_image']; ?>" />
+                                        </a>
+                                        <?php  }
                                                 }
                                                 ?>
-                                            </div>
-
-                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
 
                 <?php }
+                    wp_reset_postdata();
                 }
                 ?>
 
             </div>
         </section>
+
+        <?php
+        $eventsFilms = new WP_Query([
+            'post_type' => 'multimedia',
+            'post_per_page' => 8,
+            'orderBy' => 'date',
+            'meta_key' => 'multimedia_type',
+            'order' => 'ASC',
+            'meta_query' => array(
+                array(
+                    'key' => 'multimedia_type',
+                    'value' => 'film',
+                    'compare' => '=',
+                )
+            )
+        ]);
+        ?>
         <section class="events-films">
             <div class="row mb-5">
                 <div class="col-6">
@@ -113,18 +131,43 @@ if (is_front_page()) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
+                <?php
+                if ($eventsFilms->have_posts()) {
+                    while ($eventsFilms->have_posts()) {
+                        $eventsFilms->the_post(); ?>
+                <div class="col-3 mb-4">
                     <div class="multimedia__card-event">
                         <div class="multimedia__image-container">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/event-film.png" class="multimedia__image" alt="Avatar">
+                            <img src="https://img.youtube.com/vi/<?php the_field('multimedia_film'); ?>/maxresdefault.jpg"
+                                class="multimedia__image" alt="Avatar">
                         </div>
                         <div class="multimedia__title-event-container mt-3">
-                            <h3 class="header multimedia__title-event">Gdańsk MeetUp #13</h3>
+                            <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
                         </div>
                     </div>
                 </div>
+                <?php }
+                }
+                wp_reset_postdata(); ?>
             </div>
+
         </section>
+        <?php
+        $eventsGallery = new WP_Query([
+            'post_type' => 'multimedia',
+            'post_per_page' => 8,
+            'orderBy' => 'date',
+            'meta_key' => 'multimedia_type',
+            'order' => 'ASC',
+            'meta_query' => array(
+                array(
+                    'key' => 'multimedia_type',
+                    'value' => 'picture',
+                    'compare' => '=',
+                )
+            )
+        ]);
+        ?>
         <section class="events-gallery mt-5">
             <div class="row">
                 <div class="col-6">
@@ -132,7 +175,7 @@ if (is_front_page()) {
                 </div>
                 <div class="col-3 text-right">
                     <div class="input-container">
-                        <input type="text" name="film" class="input" placeholder="Znajdź film" />
+                        <input type="text" name="film" class="input" placeholder="Znajdź galerię" />
                     </div>
                 </div>
                 <div class="col-3 text-right">
@@ -147,16 +190,22 @@ if (is_front_page()) {
                 </div>
             </div>
             <div class="row mt-5">
+                <?php
+                if ($eventsGallery->have_posts()) {
+                    while ($eventsGallery->have_posts()) {
+                        $eventsGallery->the_post(); ?>
                 <div class="col-3">
                     <div class="multimedia__card">
                         <div class="multimedia__image-container">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/event-film.png" class="multimedia__image" alt="Avatar">
+                            <?php the_post_thumbnail(); ?>
                         </div>
                         <div class="multimedia__title-event-container mt-3">
-                            <h3 class="header multimedia__title-event">Gdańsk MeetUp #13</h3>
+                            <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
                         </div>
                     </div>
                 </div>
+                <?php }
+                } ?>
             </div>
         </section>
     </div>

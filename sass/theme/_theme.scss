@@ -741,6 +741,7 @@ body {
 .our-speakers {
 	&__image {
 		border-radius: 18px;
+		object-fit: cover;
 	}
 }
 
@@ -812,9 +813,7 @@ body {
 		-webkit-appearance: none;
 		appearance: none;
 	}
-}
 
-.multimedia {
 	&__title-event {
 		font-size: 20px;
 		color: $white;
