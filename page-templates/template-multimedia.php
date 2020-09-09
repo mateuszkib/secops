@@ -35,253 +35,60 @@ if (is_front_page()) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
+                <?php
+                $speakers = new WP_Query([
+                    'post_type' => 'speaker',
+                    'post_per_page' => 8
+                ]);
+                if ($speakers->have_posts()) {
+                    while ($speakers->have_posts()) {
+                        $speakers->the_post(); ?>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
+                        <div class="col-3">
+                            <div class="flip-card">
+                                <div class="flip-card__inner">
+                                    <div class="flip-card__front">
+                                        <img src="<?php the_field('speaker_image'); ?>" class="our-speakers__image h-100 w-100" alt="Avatar">
                                     </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
+                                    <div class="flip-card__back p-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="flip-card__profession"><?php the_field('speaker_profession'); ?></h4>
+                                            </div>
+                                            <div class="col-12">
+                                                <h3 class="header flip-card__name"><?php the_title(); ?></h3>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="flip-card__body"><?php the_field('speaker_description'); ?></p>
+                                                </p>
+                                            </div>
+                                            <div class="col-12">
+                                                <?php
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
+                                                if (get_field('speaker_social_media')) {
+                                                    $socialIcons = get_field('speaker_social_media');
+                                                    foreach ($socialIcons as $icon) { ?>
+                                                        <a href="<?php echo $icon['social_image_link']; ?>">
+                                                            <img src="<?php echo $icon['social_image']; ?>" />
+                                                        </a>
+                                                <?php  }
+                                                }
+                                                ?>
+                                            </div>
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/image.png" class="our-speakers__image" alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession">Developer</h4>
-                                    </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name">Guy Hawkins</h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body">Id velit vestibulum consectetur pretium velit.
-                                            Aliquam ac suspendisse sit
-                                            tortor.
-                                            Risus urna, in dui arcu dolor viverra. </p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_facebook-square.svg" />
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/jam_linkedin-square.svg" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php }
+                }
+                ?>
+
             </div>
         </section>
         <section class="events-films">
