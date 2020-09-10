@@ -598,6 +598,32 @@ body {
 		max-width: 552px;
 	}
 
+	&__current {
+		position: relative;
+		&--arrow-left {
+			&::before {
+				content: "\003c";
+				font-size: 32px;
+				color: $white;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				left: -20%;
+			}
+		}
+		&--arrow-right {
+			&::after {
+				content: "\003e";
+				font-size: 32px;
+				color: $white;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				right: -20%;
+			}
+		}
+	}
+
 	&__past {
 		&--dark-purple-bg {
 			background: #0c0434;
