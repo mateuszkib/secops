@@ -18,6 +18,20 @@ body {
 	font-size: 16px;
 }
 
+.arrow-left {
+	position: absolute;
+	top: 60%;
+	transform: translate(-50%, -50%);
+	left: -10%;
+}
+
+.arrow-right {
+	position: absolute;
+	top: 60%;
+	transform: translate(-50%, -50%);
+	right: -10%;
+}
+
 .sponsors-carousel,
 .community,
 .who-we-are,
@@ -601,26 +615,22 @@ body {
 	&__current {
 		position: relative;
 		&--arrow-left {
-			&::before {
-				content: "\003c";
-				font-size: 32px;
-				color: $white;
-				position: absolute;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				left: -20%;
-			}
+			content: "\003c";
+			font-size: 32px;
+			color: $white;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			left: -20%;
 		}
 		&--arrow-right {
-			&::after {
-				content: "\003e";
-				font-size: 32px;
-				color: $white;
-				position: absolute;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				right: -20%;
-			}
+			content: "\003e";
+			font-size: 32px;
+			color: $white;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			right: -20%;
 		}
 	}
 

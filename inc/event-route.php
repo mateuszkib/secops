@@ -54,6 +54,7 @@ function secopsEventsResult($data)
             'event_start_date' => get_field('event_date_start'),
             'title' => get_the_title(),
             'content' => get_the_content(),
+            'template_uri' => get_template_directory_uri(),
         ]);
     }
     return $data;

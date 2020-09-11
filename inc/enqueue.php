@@ -35,6 +35,10 @@ if (!function_exists('understrap_scripts')) {
         if (is_singular() && comments_open() && get_option('thread_comments')) {
             wp_enqueue_script('comment-reply');
         }
+
+        wp_localize_script('understrap-scripts', 'secopsData', [
+            'root_url' => get_site_url(),
+        ]);
     }
 } // End of if function_exists( 'understrap_scripts' ).
 

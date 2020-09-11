@@ -49,6 +49,7 @@ function displayLocations($kindEvent)
 
         $html .= "<li class='events-page__list-item events-page__list-item--{$class}'><a href='?{$kindEvent}={$slug}' class='events-page__list-link'>{$title}</a></li>";
     }
+    wp_reset_postdata();
     return $html;
 }
 ?>
@@ -58,13 +59,21 @@ function displayLocations($kindEvent)
     <div class="<?php echo esc_attr($container); ?> events-page" id="content">
 
         <section class="current-meetup">
-            <div class="row current-meetup__load-ajax-data">
+            <div class="row position-relative">
+                <?php
+                global $wp;
+                $current_url =  home_url($wp->request);
+                $page = get_query_var('paged') ? get_query_var('paged') : 1;
+                var_dump($page);
+                ?>
+                <a href="<?php echo $current_url . '/?paged=' . --$page; ?>" class="arrow-left position-absolute"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow-left.svg" /></a>
+                <a href="<?php echo $current_url . '/?paged=' . ++$page; ?>" class="arrow-right position-absolute"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow-right.svg" /></a>
+
                 <div class="col-12 text-center">
                     <h2 class="header events-page__header">Aktualne MeetUpy</h2>
                 </div>
 
                 <?php
-
                 $today = date('Ymd');
                 $currentEvents = new WP_Query([
                     'post_type' => 'event',
@@ -72,6 +81,7 @@ function displayLocations($kindEvent)
                     'orderby' => 'meta_value_num',
                     'meta_key' => 'event_date_start',
                     'order' => 'ASC',
+                    'paged' => get_query_var('paged'),
                     'meta_query' => array(
                         array(
                             'key' => 'event_date_start',
@@ -101,122 +111,111 @@ function displayLocations($kindEvent)
                 <?php
                 $counter = 0;
                 $total = $currentEvents->post_count;
-
                 if ($currentEvents->have_posts()) {
                     while ($currentEvents->have_posts()) {
                         $currentEvents->the_post();
                 ?>
 
-                <?php if ($counter == 0) { ?>
-                <div class="col-6 events-page__current events-page__current--arrow-left mr-4">
-                    <div class="row p-5 bg-white rounded">
-                        <div class="col-6">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <h2 class="header events__header-box events-page--white-color-header"><?php the_title(); ?>
-                            </h2>
-                            <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10); ?></p>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button class="events__button-check">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                        </div>
-                    </div>
-                    <?php } ?>
+                        <?php if ($counter == 0) { ?>
+                            <div class="col-6 events-page__current ml-2 mr-3 position-relative">
 
-                    <?php if ($counter == 1) { ?>
-                    <div class="row bg-white p-5 mt-3 rounded">
-                        <div class="col-6">
-                            <h2 class="header events__header-box">
-                                <?php the_title(); ?>
-                            </h2>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button class="events__button-check">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img
-                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                        </div>
-                    </div>
+                                <div class="row p-5 bg-white rounded">
+                                    <div class="col-6">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-5">
+                                        <h2 class="header events__header-box events-page--white-color-header"><?php the_title(); ?></h2>
+                                        <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10); ?></p>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                                    </div>
+                                </div>
+                            <?php } ?>
 
-                </div>
-                <div class="col-6 events-page__current events-page__current--arrow-right">
-                    <?php } else if ($counter == 2) { ?>
-                    <div class="row bg-white p-5 rounded">
-                        <div class="col-6">
-                            <h2 class="header events__header-box">
-                                <?php the_title(); ?>
-                            </h2>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                            <?php if ($counter == 1) { ?>
+                                <div class="row bg-white p-5 mt-3 rounded">
+                                    <div class="col-6">
+                                        <h2 class="header events__header-box">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button class="events__button-check">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img
-                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                        </div>
-                    </div>
-                    <?php } else if ($counter == 3) { ?>
-                    <div class="row p-5 bg-white rounded mt-3">
-                        <div class="col-6">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <h2 class="header events__header-box"><?php the_title(); ?></h2>
-                            <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10); ?></p>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button class="events__button-check">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                        </div>
-                    </div>
-                    <?php } ?>
-                    <?php $counter++;
+                            <div class="col-6 events-page__current">
+
+                            <?php } else if ($counter == 2) { ?>
+                                <div class="row bg-white p-5 rounded">
+                                    <div class="col-6">
+                                        <h2 class="header events__header-box">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                                    </div>
+                                </div>
+                            <?php } else if ($counter == 3) { ?>
+                                <div class="row p-5 bg-white rounded mt-3">
+                                    <div class="col-6">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-5">
+                                        <h2 class="header events__header-box"><?php the_title(); ?></h2>
+                                        <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10); ?></p>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php $counter++;
                         if ($counter == $total) {
                             echo '</div>';
                         }
                     }
                 } else { ?>
-                    <div class="row w-100 d-flex justify-content-center">
-                        <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
-                    </div>
+                        <div class="row w-100 d-flex justify-content-center">
+                            <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
+                        </div>
                     <?php }
                 wp_reset_postdata();
                     ?>
-                </div>
-            </div>
+                            </div>
         </section>
         <!-- PAST MEETUPS -->
         <section class="past-meetup">
@@ -237,11 +236,11 @@ function displayLocations($kindEvent)
                 $today = date('Ymd');
                 $pastEvents = new WP_Query([
                     'post_type' => 'event',
-                    'post_per_page' => 4,
+                    'posts_per_page' => 4,
                     'orderby' => 'meta_value_num',
                     'meta_key' => 'event_date_start',
                     'order' => 'ASC',
-                    'paged' => 1,
+                    'paged' => $_GET['page'] ? $_GET['page'] : 1,
                     'meta_query' => array(
                         array(
                             'key' => 'event_date_start',
@@ -266,118 +265,104 @@ function displayLocations($kindEvent)
                         $pastEvents->the_post();
                 ?>
 
-                <?php if ($counter == 0) { ?>
-                <div class="col-6 events-page__past mr-4">
-                    <div class="row events-page__past--dark-purple-bg p-5 rounded">
-                        <div class="col-6">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <h2 class="header events__header-box events-page__past--white-color-header">
-                                <?php the_title(); ?>
-                            </h2>
-                            <p class="events__content-box-big events-page__past--content-color">
-                                <?php echo wp_trim_words(get_the_content(), 10); ?></p>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button
-                                    class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
-                        </div>
-                    </div>
-                    <?php } ?>
+                        <?php if ($counter == 0) { ?>
+                            <div class="col-6 events-page__past mr-4">
+                                <div class="row events-page__past--dark-purple-bg p-5 rounded">
+                                    <div class="col-6">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-5">
+                                        <h2 class="header events__header-box events-page__past--white-color-header">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                        <p class="events__content-box-big events-page__past--content-color">
+                                            <?php echo wp_trim_words(get_the_content(), 10); ?></p>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
+                                    </div>
+                                </div>
+                            <?php } ?>
 
-                    <?php if ($counter == 1) { ?>
-                    <div class="row events-page__past--dark-purple-bg p-5 mt-3 rounded">
-                        <div class="col-6">
-                            <h2 class="header events__header-box events-page__past--white-color-header">
-                                <?php the_title(); ?>
-                            </h2>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button
-                                    class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img
-                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
-                    </div>
+                            <?php if ($counter == 1) { ?>
+                                <div class="row events-page__past--dark-purple-bg p-5 mt-3 rounded">
+                                    <div class="col-6">
+                                        <h2 class="header events__header-box events-page__past--white-color-header">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
+                                </div>
 
-                </div>
-                <div class="col-6 events-page__past">
-                    <?php } else if ($counter == 2) { ?>
-                    <div class="row events-page__past--dark-purple-bg p-5 rounded">
-                        <div class="col-6">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
                             </div>
-                        </div>
-                        <div class="col-12 mt-5">
-                            <h2 class="header events__header-box events-page__past--white-color-header">
-                                <?php the_title(); ?>
-                            </h2>
-                            <p class="events__content-box-big events-page__past--content-color">
-                                <?php echo wp_trim_words(get_the_content(), 10); ?></p>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button
-                                    class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
-                        </div>
-                    </div>
-                    <?php } else if ($counter == 3) { ?>
-                    <div class="row events-page__past--dark-purple-bg mt-3 p-5 rounded">
-                        <div class="col-6">
-                            <h2 class="header events__header-box events-page__past--white-color-header">
-                                <?php the_title(); ?>
-                            </h2>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
-                            </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button
-                                    class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img
-                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
-                    </div>
-                    <?php } ?>
-                    <?php $counter++;
+                            <div class="col-6 events-page__past">
+                            <?php } else if ($counter == 2) { ?>
+                                <div class="row events-page__past--dark-purple-bg p-5 rounded">
+                                    <div class="col-6">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-5">
+                                        <h2 class="header events__header-box events-page__past--white-color-header">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                        <p class="events__content-box-big events-page__past--content-color">
+                                            <?php echo wp_trim_words(get_the_content(), 10); ?></p>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
+                                    </div>
+                                </div>
+                            <?php } else if ($counter == 3) { ?>
+                                <div class="row events-page__past--dark-purple-bg mt-3 p-5 rounded">
+                                    <div class="col-6">
+                                        <h2 class="header events__header-box events-page__past--white-color-header">
+                                            <?php the_title(); ?>
+                                        </h2>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <div>
+                                            <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mt-4">
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
+                                    </div>
+                                    <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
+                                </div>
+                            <?php } ?>
+                        <?php $counter++;
                         if ($counter == $total) {
                             echo '</div>';
                         }
                     }
                 } else { ?>
-                    <div class="row w-100 d-flex justify-content-center">
-                        <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
-                    </div>
+                        <div class="row w-100 d-flex justify-content-center">
+                            <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
+                        </div>
                     <?php }
                 wp_reset_postdata();
                     ?>
@@ -420,26 +405,23 @@ function displayLocations($kindEvent)
                 if ($eventsPartners->have_posts()) {
                     while ($eventsPartners->have_posts()) {
                         $eventsPartners->the_post();     ?>
-                <div class="col-3 text-center">
-                    <div class="events-page__partner-event-box">
-                        <div class="col-12">
-                            <img src="<?php the_field('logo'); ?>" class="events-page__partner-event-image" />
-                            <h2 class="events-page__partner-event-title"><?php the_title(); ?></h2>
-                            <p class="events-page__partner-event-desc"><?php the_field('short_description'); ?></p>
-                            <div class="col-8 offset-2">
-                                <span
-                                    class="events__button-date events-page__partner-event-button button d-flex align-items-center"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                        <div class="col-3 text-center">
+                            <div class="events-page__partner-event-box">
+                                <div class="col-12">
+                                    <img src="<?php the_field('logo'); ?>" class="events-page__partner-event-image" />
+                                    <h2 class="events-page__partner-event-title"><?php the_title(); ?></h2>
+                                    <p class="events-page__partner-event-desc"><?php the_field('short_description'); ?></p>
+                                    <div class="col-8 offset-2">
+                                        <span class="events__button-date events-page__partner-event-button button d-flex align-items-center"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <?php }
+                    <?php }
                 } else { ?>
-                <div class="row w-100 d-flex justify-content-center">
-                    <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
-                </div>
+                    <div class="row w-100 d-flex justify-content-center">
+                        <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
+                    </div>
                 <?php }
                 wp_reset_postdata();
                 ?>
