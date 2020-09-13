@@ -23,11 +23,15 @@ if (!function_exists('understrap_scripts')) {
         wp_enqueue_style('understrap-styles', get_template_directory_uri() . '/css/theme.min.css', array(), $css_version);
         wp_enqueue_style('understrap-carousel-theme', get_template_directory_uri() . '/css/owl.theme.default.min.css');
         wp_enqueue_style('understrap-carousel', get_template_directory_uri() . '/css/owl.carousel.min.css');
+        wp_enqueue_style('understrap-splide_css', get_template_directory_uri() . '/node_modules/@splidejs/splide/dist/css/splide.min.css');
+        wp_enqueue_style('understrap-splide_video_css', get_template_directory_uri() . '/node_modules/@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css');
 
 
         wp_enqueue_script('jquery');
 
         $js_version = $theme_version . '.' . filemtime(get_template_directory() . '/js/theme.min.js');
+        wp_enqueue_script('understrap-splide_js', get_template_directory_uri() . '/node_modules/@splidejs/splide/dist/js/splide.min.js', '', '1.0', true);
+        wp_enqueue_script('understrap-splide_video_js', get_template_directory_uri() . '/node_modules/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js', '', '1.0', true);
         wp_enqueue_script('understrap-scripts', get_template_directory_uri() . '/js/theme.min.js', array('jquery'), $js_version, true);
         wp_enqueue_script('main_js', get_template_directory_uri() . '/js/custom-javascript.js', array('jquery'), '1.0', true);
         wp_enqueue_script('understrap-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js', array('jquery'), '1.0', true);

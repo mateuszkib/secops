@@ -1,61 +1,63 @@
 <?php
 
-add_action('rest_api_init', 'secopsRegisterEvents');
+add_action('rest_api_init', 'secopsRegisterMultimedia');
 
-function secopsRegisterEvents()
+function secopsRegisterMultimedia()
 {
-    register_rest_route('secops/v1', 'event', [
+    register_rest_route('secops/v1', 'multimedia', [
         'methods' => WP_REST_SERVER::READABLE,
-        'callback' => 'secopsEventsResult'
+        'callback' => 'secopsMultimediaResult'
     ]);
 }
 
-function getCityID($parametr)
+function secopsMultimediaResult($data)
 {
-    $defaultCityID = 93;
-    if ($_GET[$parametr]) {
-        $post = get_page_by_path($_GET[$parametr], '', 'city');
-        $cityID = $post->ID;
-    } else {
-        $cityID = $defaultCityID;
-    }
-
-    return $cityID;
-}
-
-function secopsEventsResult($data)
-{
-    $today = date('Ymd');
-    $currentEvents = new WP_Query([
-        'post_type' => 'event',
-        'posts_per_page' => 4,
-        'orderby' => 'meta_value_num',
-        'meta_key' => 'event_date_start',
-        'order' => 'ASC',
-        'paged' => $data['page'],
-        'meta_query' => array(
-            array(
-                'key' => 'event_date_start',
-                'value' => $today,
-                'compare' => '>=',
-                'type' => 'numeric'
-            ), array(
-                'key' => 'related_cities',
-                'compare' => 'LIKE',
-                'value' => '"' . getCityID("currentCity") . '"'
+    if (isset($_GET['galleryID'])) {
+        $args = [
+            'p' => $data['galleryID'],
+            'post_type' => 'multimedia',
+            'meta_key' => 'multimedia_type',
+            'meta_query' => array(
+                array(
+                    'key' => 'multimedia_type',
+                    'value' => 'picture',
+                    'compare' => '=',
+                )
             )
-        )
-    ]);
+        ];
+        $multimedia = new WP_Query($args);
 
-    $data = [];
-    while ($currentEvents->have_posts()) {
-        $currentEvents->the_post();
-        array_push($data, [
-            'event_start_date' => get_field('event_date_start'),
-            'title' => get_the_title(),
-            'content' => get_the_content(),
-            'template_uri' => get_template_directory_uri(),
-        ]);
+        $data = [];
+        while ($multimedia->have_posts()) {
+            $multimedia->the_post();
+            array_push($data, [
+                'photos' => get_field('photos_content'),
+            ]);
+        }
+        return $data;
+    } else if ($_GET['filmID']) {
+        $args = [
+            'p' => $data['filmID'],
+            'post_type' => 'multimedia',
+            'meta_key' => 'multimedia_type',
+            'meta_query' => array(
+                array(
+                    'key' => 'multimedia_type',
+                    'value' => 'film',
+                    'compare' => '=',
+                )
+            )
+        ];
+        $multimedia = new WP_Query($args);
+
+        $data = [];
+        while ($multimedia->have_posts()) {
+            $multimedia->the_post();
+            array_push($data, [
+                'film' => get_field('multimedia_film'),
+            ]);
+        }
+
+        return $data;
     }
-    return $data;
 }

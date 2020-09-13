@@ -32,6 +32,41 @@ body {
 	right: -10%;
 }
 
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	a,
+	span {
+		color: $white;
+		display: inline-block;
+		text-align: center;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 50%;
+		height: 2.4em;
+		width: 2.4em;
+		line-height: 2.4em;
+		font-weight: bold;
+		margin: 5px;
+	}
+
+	.pagination-flex {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.current {
+		border-color: #902fff;
+	}
+
+	.next.page-numbers,
+	.prev.page-numbers {
+		display: none;
+	}
+}
+
 .sponsors-carousel,
 .community,
 .who-we-are,
