@@ -62,13 +62,12 @@ if (is_front_page()) {
     <div class="<?php echo esc_attr($container); ?> multimedia" id="multimedia">
         <section class="our-speakers">
             <div class="row mb-4">
-                <div class="col-6">
+                <div class="col-12 col-md-6 col-lg-6">
                     <h2 class="header header-section-page">Nasi prelegenci</h2>
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-12 col-md-6 col-lg-6 text-right">
                     <div class="input-container">
-                        <input type="text" name="speaker-name" class="multimedia-search-input input"
-                            placeholder="Znajdź prelegenta" />
+                        <input type="text" name="speaker-name" class="multimedia-search-input input" placeholder="Znajdź prelegenta" />
                     </div>
                 </div>
             </div>
@@ -91,44 +90,43 @@ if (is_front_page()) {
                     while ($speakers->have_posts()) {
                         $speakers->the_post(); ?>
 
-                <div class="col-3">
-                    <div class="flip-card">
-                        <div class="flip-card__inner">
-                            <div class="flip-card__front">
-                                <img src="<?php the_field('speaker_image'); ?>" class="our-speakers__image h-100 w-100"
-                                    alt="Avatar">
-                            </div>
-                            <div class="flip-card__back p-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4 class="flip-card__profession"><?php the_field('speaker_profession'); ?></h4>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="flip-card">
+                                <div class="flip-card__inner">
+                                    <div class="flip-card__front">
+                                        <img src="<?php the_field('speaker_image'); ?>" class="our-speakers__image h-100 w-100" alt="Avatar">
                                     </div>
-                                    <div class="col-12">
-                                        <h3 class="header flip-card__name"><?php the_title(); ?></h3>
-                                    </div>
-                                    <div class="col-12">
-                                        <p class="flip-card__body"><?php the_field('speaker_description'); ?></p>
-                                        </p>
-                                    </div>
-                                    <div class="col-12">
-                                        <?php
+                                    <div class="flip-card__back p-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="flip-card__profession"><?php the_field('speaker_profession'); ?></h4>
+                                            </div>
+                                            <div class="col-12">
+                                                <h3 class="header flip-card__name"><?php the_title(); ?></h3>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="flip-card__body"><?php the_field('speaker_description'); ?></p>
+                                                </p>
+                                            </div>
+                                            <div class="col-12">
+                                                <?php
 
                                                 if (get_field('speaker_social_media')) {
                                                     $socialIcons = get_field('speaker_social_media');
                                                     foreach ($socialIcons as $icon) { ?>
-                                        <a href="<?php echo $icon['social_image_link']; ?>">
-                                            <img src="<?php echo $icon['social_image']; ?>" />
-                                        </a>
-                                        <?php  }
+                                                        <a href="<?php echo $icon['social_image_link']; ?>">
+                                                            <img src="<?php echo $icon['social_image']; ?>" />
+                                                        </a>
+                                                <?php  }
                                                 }
                                                 ?>
-                                    </div>
+                                            </div>
 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
 
                 <?php
@@ -187,16 +185,15 @@ if (is_front_page()) {
         ?>
         <section id="films-events" class="events-films">
             <div class="row mb-5">
-                <div class="col-6">
+                <div class="col-12 col-md-6 col-lg-6">
                     <h2 class="header header-section-page">Filmy z eventów</h2>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-12 col-md-6 col-lg-3 text-right">
                     <div class="input-container">
-                        <input type="text" id="film" name="film" class="multimedia-search-input input"
-                            placeholder="Znajdź film" />
+                        <input type="text" id="film" name="film" class="multimedia-search-input input" placeholder="Znajdź film" />
                     </div>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-12 col-md-12 col-lg-3 text-right mt-lg-0 mt-3">
                     <div class="select-container">
                         <select id="select-film" class="select multimedia__select multimedia__select--film w-100">
                             <option <?php echo !$_GET['cityFilm'] ? 'selected="selected"' : ''; ?> disabled>Wybierz
@@ -214,26 +211,25 @@ if (is_front_page()) {
                 if ($eventsFilms->have_posts()) {
                     while ($eventsFilms->have_posts()) {
                         $eventsFilms->the_post(); ?>
-                <div data-id="<?php the_ID(); ?>" class="col-3 mb-4 show-multimedia-film">
-                    <div class="multimedia__card-event">
-                        <div class="multimedia__image-container">
-                            <img src="https://img.youtube.com/vi/<?php the_field('multimedia_film'); ?>/maxresdefault.jpg"
-                                class="multimedia__image" alt="Avatar">
+                        <div data-id="<?php the_ID(); ?>" class="col-12 col-md-6 col-lg-3 mb-4 show-multimedia-film">
+                            <div class="multimedia__card-event">
+                                <div class="multimedia__image-container">
+                                    <img src="https://img.youtube.com/vi/<?php the_field('multimedia_film'); ?>/maxresdefault.jpg" class="multimedia__image" alt="Avatar">
+                                </div>
+                                <div class="multimedia__title-event-container mt-3">
+                                    <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="multimedia__title-event-container mt-3">
-                            <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
-                        </div>
-                    </div>
-                </div>
-                <?php if ($counter == 3) { ?>
-                <div class="col-12 mt-5 mb-5 film-events-container">
-                </div>
-                <?php }
+                        <?php if ($counter == 3) { ?>
+                            <div class="col-12 mt-5 mb-5 multimedia__film-events-container">
+                            </div>
+                        <?php }
                         $counter++;
                     }
                     if ($countPost < 4) { ?>
-                <div class="col-12 mt-5 mb-5 film-events-container">
-                </div>
+                        <div class="col-12 mt-5 mb-5 film-events-container">
+                        </div>
                 <?php }
                 }
 
@@ -260,9 +256,9 @@ if (is_front_page()) {
             'post_type' => 'multimedia',
             'posts_per_page' => 8,
             's' => $_GET['gallery'] ? $_GET['gallery'] : "",
-            'orderBy' => 'date',
+            'orderBy' => 'multimedia_date',
             'meta_key' => 'multimedia_type',
-            'order' => 'ASC',
+            'order' => 'DESC',
             'paged' => $_GET['paged3'] ? $_GET['paged3'] : 1,
             'meta_query' => array(
                 array(
@@ -288,18 +284,17 @@ if (is_front_page()) {
         ?>
         <section class="events-gallery mt-5">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6 col-lg-6">
                     <h2 class="header header-section-page">Galeria z eventów</h2>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-12 col-md-6 col-lg-3 text-right">
                     <div class="input-container">
-                        <input type="text" id="gallery" name="gallery" class="multimedia-search-input input"
-                            placeholder="Znajdź galerię" />
+                        <input type="text" id="gallery" name="gallery" class="multimedia-search-input input" placeholder="Znajdź galerię" />
                     </div>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-12 col-md-12 mt-3 mt-lg-0 col-lg-3 text-right">
                     <div class="select-container">
-                        <select id="select-gallery" class="select multimedia__select multimedia__select--gallery w-100">
+                        <select id="select-gallery" class="select multimedia__select multimedia__select--gallery w-100 mt-3 mt-md-0">
                             <option <?php echo !$_GET['cityGallery'] ? 'selected="selected"' : ''; ?> disabled>Wybierz
                                 miasto
                             </option>
@@ -316,25 +311,25 @@ if (is_front_page()) {
                     while ($eventsGallery->have_posts()) {
                         $eventsGallery->the_post();
                 ?>
-                <div data-id="<?php the_ID(); ?>" class="col-3 show-multimedia-gallery">
-                    <div class="multimedia__card">
-                        <div class="multimedia__image-container">
-                            <?php the_post_thumbnail(); ?>
+                        <div data-id="<?php the_ID(); ?>" class="col-12 col-md-6 col-lg-3 mb-3 text-center show-multimedia-gallery">
+                            <div class="multimedia__card">
+                                <div class="multimedia__image-container">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                                <div class="multimedia__title-event-container mt-3">
+                                    <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="multimedia__title-event-container mt-3">
-                            <h3 class="header multimedia__title-event"><?php the_title(); ?></h3>
-                        </div>
-                    </div>
-                </div>
-                <?php if ($counter == 3) { ?>
-                <div class="col-12 mt-5 mb-5 gallery-events-container">
-                </div>
-                <?php }
+                        <?php if ($counter == 3) { ?>
+                            <div class="col-12 mt-5 mb-5 multimedia__gallery-events-container">
+                            </div>
+                        <?php }
                         $counter++;
                     }
                     if ($countPost < 4) { ?>
-                <div class="col-12 mt-5 mb-5 gallery-events-container">
-                </div>
+                        <div class="col-12 mt-5 mb-5 gallery-events-container">
+                        </div>
                 <?php }
                 }
 

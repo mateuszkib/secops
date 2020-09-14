@@ -56,12 +56,15 @@ let showFilmMultimedia = document.querySelectorAll(".show-multimedia-film");
 let splide = document.querySelector(".splide");
 let splideList = document.querySelector(".splide__list");
 let galleryEventsContainer = document.querySelector(
-	".gallery-events-container"
+	".multimedia__gallery-events-container"
 );
-let filmEventsContainer = document.querySelector(".film-events-container");
+let filmEventsContainer = document.querySelector(
+	".multimedia__film-events-container"
+);
 
 showGalleryMultimedia.forEach((element) => {
 	element.addEventListener("click", (e) => {
+		galleryEventsContainer.style.display = "block";
 		jQuery.getJSON(
 			secopsData.root_url +
 				"/wp-json/secops/v1/multimedia?galleryID=" +
@@ -94,6 +97,7 @@ showGalleryMultimedia.forEach((element) => {
 
 showFilmMultimedia.forEach((element) => {
 	element.addEventListener("click", (e) => {
+		filmEventsContainer.style.display = "block";
 		jQuery.getJSON(
 			secopsData.root_url +
 				"/wp-json/secops/v1/multimedia?filmID=" +

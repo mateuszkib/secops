@@ -17,6 +17,8 @@ function secopsMultimediaResult($data)
             'p' => $data['galleryID'],
             'post_type' => 'multimedia',
             'meta_key' => 'multimedia_type',
+            'orderBy' => 'publish_date',
+            'order' => 'ASC',
             'meta_query' => array(
                 array(
                     'key' => 'multimedia_type',
