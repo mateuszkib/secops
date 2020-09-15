@@ -34,16 +34,16 @@ jQuery(document).ready(function ($) {
 		navClass: ["owl-prev", "owl-next"],
 		nav: false,
 		dots: false,
-		items: 4,
-		loop: true,
+		loop: false,
 		autoHeight: true,
 		autoplay: true,
 		autoplayTimeout: 2500,
 		autoplaySpeed: 1300,
 		responsive: {
-			0: { items: 2 },
-			480: { items: 3 },
-			768: { items: 4 },
+			0: { items: 1 },
+			480: { items: 2 },
+			768: { items: 3 },
+			992: { items: 4 },
 		},
 	});
 });

@@ -28,7 +28,7 @@ if (is_front_page()) {
                 <div class="col-12 text-center">
                     <h2 class="header-section-page">Aktualne oferty pracy</h2>
                 </div>
-                <div class="col-12 mt-5">
+                <div class="col-12 mt-5 d-none">
                     <div class="events-page__city-list-container">
                         <ul class="events-page__list-group d-flex align-items-center justify-content-center flex-wrap">
                             <li class="events-page__list-item">Wszystkie</li>
@@ -41,7 +41,7 @@ if (is_front_page()) {
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 current-jobs-offers__become-sponsor">
+                <div class="col-12 current-jobs-offers__become-sponsor mt-3">
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-6">
                             <img src="<?php the_field('become_sponsor_logo'); ?>" />

@@ -282,7 +282,7 @@ if (is_front_page()) {
 
         $eventsGallery = new WP_Query($argsGalleryEvents);
         ?>
-        <section class="events-gallery mt-5">
+        <section class="events-gallery mt-5 d-none">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
                     <h2 class="header header-section-page">Galeria z eventów</h2>

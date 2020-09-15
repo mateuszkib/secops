@@ -147,7 +147,7 @@ function getCityID($parametr)
                 ?>
 
                         <?php if ($counter == 0) { ?>
-                            <div class="col-10 offset-1 col-lg-6 offset-md-0 events-page__current ml-md-2 mr-md-3 position-relative">
+                            <div class="col-10 offset-1 col-md-11 offset-md-1 col-lg-6 offset-lg-0 mr-lg-3 events-page__current position-relative">
 
                                 <div class="row p-5 bg-white rounded">
                                     <div class="col-6">
@@ -194,7 +194,7 @@ function getCityID($parametr)
                                 </div>
 
                             </div>
-                            <div class="col-10 offset-1 col-lg-6 offset-md-0 mt-3 mt-md-0 events-page__current">
+                            <div class="col-10 offset-1 col-md-11 offset-md-1 col-lg-6 offset-lg-0 mt-3 mt-lg-0 events-page__current">
 
                             <?php } else if ($counter == 2) { ?>
                                 <div class="row bg-white p-5 rounded">
@@ -314,7 +314,7 @@ function getCityID($parametr)
                 ?>
 
                         <?php if ($counter == 0) { ?>
-                            <div class="col-10 offset-1 col-lg-6 offset-md-0 events-page__past mr-4">
+                            <div class="col-10 offset-1 col-md-11 offset-md-1 col-lg-6 offset-lg-0 events-page__past mr-4">
                                 <div class="row events-page__past--dark-purple-bg p-5 rounded">
                                     <div class="col-6">
                                         <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
@@ -341,7 +341,7 @@ function getCityID($parametr)
                             <?php } ?>
 
                             <?php if ($counter == 1) { ?>
-                                <div class="row events-page__past--dark-purple-bg p-5 mt-3 mb-3 mb-md-0 rounded">
+                                <div class="row events-page__past--dark-purple-bg p-5 mt-3 mb-3 mb-lg-0 rounded">
                                     <div class="col-6">
                                         <h2 class="header events__header-box events-page__past--white-color-header">
                                             <?php the_title(); ?>
@@ -359,7 +359,7 @@ function getCityID($parametr)
                                 </div>
 
                             </div>
-                            <div class="col-10 offset-1 col-lg-6 offset-md-0 events-page__past">
+                            <div class="col-10 offset-1 col-lg-6 col-md-11 offset-md-1 offset-lg-0 mt events-page__past">
                             <?php } else if ($counter == 2) { ?>
                                 <div class="row events-page__past--dark-purple-bg p-5 rounded">
                                     <div class="col-6">
@@ -416,12 +416,12 @@ function getCityID($parametr)
                     ?>
         </section>
         <!-- EVENTS PARTNERS -->
-        <section class="partners-meetup" id="partners-events">
+        <!-- <section class="partners-meetup" id="partners-events">
             <div class="row position-relative">
 
                 <?php
 
-                $eventsPartners = new WP_Query([
+                /* $eventsPartners = new WP_Query([
                     'post_type' => 'event-partners',
                     'posts_per_page' => 4,
                     'orderby' => 'meta_value_num',
@@ -455,7 +455,7 @@ function getCityID($parametr)
                 <?php
                 if ($total == 4 && $allPartnersEvents > 4) { ?>
                     <a href="<?php echo $current_url . '?partnersCity=' . ($_GET['partnersCity'] ? $_GET['partnersCity'] : 'online') . '&paged3=' . paginateEventsArrows('right', $page) . '#partners-events'; ?>" class="arrow-right position-absolute"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow-right.svg" /></a>
-                <?php }
+                <?php } */
                 ?>
 
                 <div class="col-12 text-center">
@@ -464,25 +464,28 @@ function getCityID($parametr)
                 <div class="col-12 mt-5 mb-5">
                     <div class="events-page__city-list-container">
                         <ul class="events-page__list-group d-flex align-items-center justify-content-center flex-wrap">
-                            <?php echo displayLocations('partnersCity'); ?>
+                            <?php  // echo displayLocations('partnersCity'); 
+                            ?>
                         </ul>
                     </div>
                 </div>
                 <?php
 
 
-                if ($eventsPartners->have_posts()) {
+                /* if ($eventsPartners->have_posts()) {
                     while ($eventsPartners->have_posts()) {
                         $eventsPartners->the_post();     ?>
-                        <div class="col-lg-3 col-12 text-center mt-3 mt-md-0">
+                        <div class="col-md-6 col-lg-3 col-12 text-center mt-3 mt-md-3">
                             <div class="events-page__partner-event-box">
                                 <div class="col-12">
-                                    <div class="col-6 offset-3">
+                                    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
                                         <img src="<?php the_field('logo'); ?>" class="events-page__partner-event-image" />
                                     </div>
-                                    <h2 class="events-page__partner-event-title"><?php the_title(); ?></h2>
+                                    <div class="col-md-12 text-break">
+                                        <h2 class="events-page__partner-event-title"><?php the_title(); ?></h2>
+                                    </div>
                                     <p class="events-page__partner-event-desc"><?php the_field('short_description'); ?></p>
-                                    <div class="col-4 offset-4 col-lg-8 offset-lg-2">
+                                    <div class="col-4 offset-4 col-md-6 offset-md-3 col-lg-8 offset-lg-2">
                                         <span class="events__button-date events-page__partner-event-button button d-flex align-items-center"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
                                     </div>
                                 </div>
@@ -494,11 +497,11 @@ function getCityID($parametr)
                         <h2 class="header events-page__header">Nie odnaleziono żadnych eventów</h2>
                     </div>
                 <?php }
-                wp_reset_postdata();
+                wp_reset_postdata(); */
                 ?>
 
             </div>
-        </section>
+        </section> -->
         <!-- BECOME SPONSOR -->
         <section class="become-sponsor">
             <div class="row">

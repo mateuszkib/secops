@@ -11,30 +11,31 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 ?>
+<?php
+get_header();
+$aboutUsPageID = 57;
+?>
 <header class="header-bg">
-    <?php
-    get_header();
-    ?>
-
     <div class="home-header" style="color: white;">
         <div class="container-fluid">
             <div class="row mt-5">
-                <div class="col-6">
-                    <div class="col-lg-12 text-center">
-                        <div class="col-6 offset-3">
+                <div class="col-12 col-lg-6">
+                    <div class="col-lg-12 home-header__center-mobile-title">
+                        <div class="col-10 offset-1 col-lg-6 offset-lg-3">
                             <h1 class="home-header__title"><?php the_field('title_header'); ?></h1>
                         </div>
 
-                        <div class="col-6 offset-3">
+                        <div class="col-10 offset-1 col-lg-6 offset-lg-3">
                             <p class="header home-header__span"><?php the_field('subtitle_header'); ?></p>
                         </div>
+
                     </div>
                     <div class="col-lg-12">
                         <div class="row align-items-center">
-                            <div class="col-3 offset-3">
-                                <button class="button home-header__button w-100">Dowiedz się więcej</button>
+                            <div class="col-10 offset-1 col-lg-3 offset-lg-3">
+                                <a href="<?php echo get_page_link($aboutUsPageID); ?>"><button class="button home-header__button w-100">Dowiedz się więcej</button></a>
                             </div>
-                            <div class="col-5 text-left">
+                            <div class="col-10 offset-1 col-lg-5 mt-3 mt-lg-0 text-left">
                                 <span class="home-header__more-text">
                                     <?php
                                     if (get_field('get_more_text')) {
@@ -46,19 +47,19 @@ defined('ABSPATH') || exit;
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-10 offset-1 col-lg-6 offset-lg-0 mt-5 mt-lg-0">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/header_ilustracja.png" />
                 </div>
             </div>
             <div class="row mt-5">
-                <div class=" col-6">
+                <div class="col-10 offset-1 col-lg-6">
                     <div class="home-header__who-bg col-12">
                         <div class="col-6 offset-3">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_kimjestesmy.png" />
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-10 offset-1 col-lg-3 offset-lg-0 mt-3 mt-md-0">
                     <h2 class="header home-header__who-header">
                         <?php (get_field('who_title') ? the_field('who_title') : "");  ?>
                     </h2>
@@ -79,12 +80,12 @@ defined('ABSPATH') || exit;
 <section class="news">
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-10 offset-1 col-lg-4 offset-lg-0">
                 <h2 class="header news__header">Aktualności</h2>
                 <p class="news__paragraph">
                     <?php the_field('news_text'); ?>
                 </p>
-                <button class="button news__button">Wszystkie aktualności</button>
+                <?php echo get_field('news_button') ? the_field('news_button') : '<a href="https://www.facebook.com/SecOpsPolska/"><button class="button news__button mt-0 mb-5">Wszystkie aktualności</button></a>'; ?>
             </div>
 
             <?php
@@ -97,24 +98,22 @@ defined('ABSPATH') || exit;
             while ($newsHomePage->have_posts()) {
                 $newsHomePage->the_post();
             ?>
-            <div class="col" style="max-height: 518px;">
-                <div class="card" style="height: 100%;">
-                    <img src="<?php the_post_thumbnail_url(); ?>" class="news__img-card card-img-top" width="300"
-                        height="250" />
-                    <div class="card-body">
-                        <h5 class="header card-title"><?php echo wp_trim_words(get_the_title(), 10); ?></h5>
-                        <p class="card-text"><?php echo wp_trim_words(get_the_content(), 7); ?></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg"
-                                    width="20" /><span class="card__date"><?php the_time('d.m.Y'); ?></span>
-                            </div>
-                            <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20');
+                <div class="col-lg-4 mt-3" style="max-height: 518px;">
+                    <div class="card" style="height: 100%;">
+                        <img src="<?php the_post_thumbnail_url(); ?>" class="news__img-card card-img-top" width="300" height="250" />
+                        <div class="card-body">
+                            <h5 class="header card-title"><?php echo wp_trim_words(get_the_title(), 10); ?></h5>
+                            <p class="card-text"><?php echo wp_trim_words(get_the_content(), 7); ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date"><?php the_time('d.m.Y'); ?></span>
+                                </div>
+                                <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20');
                                                             the_author_posts_link(); ?></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
             <?php
@@ -128,15 +127,15 @@ defined('ABSPATH') || exit;
 <section class="events">
     <div class="container">
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-12 col-lg-8 offset-lg-2">
                 <h2 class="header events__header text-center">Nadchodzące eventy</h2>
             </div>
-            <div class="col-8 offset-2 mt-3">
-                <p class="events__description"><?php
-                                                if (get_field('text_events')) {
-                                                    the_field('text_events');
-                                                }
-                                                ?></p>
+            <div class="col-10 offset-1 col-lg-8 offset-lg-2 mt-3">
+                <p class="events__description text-center"><?php
+                                                            if (get_field('text_events')) {
+                                                                the_field('text_events');
+                                                            }
+                                                            ?></p>
             </div>
         </div>
 
@@ -169,69 +168,63 @@ defined('ABSPATH') || exit;
                 $counter++;
 
                 if ($counter == 1) { ?>
-            <div class="col-6 bg-white rounded">
-                <div class="row p-5 h-100">
-                    <div class="col-6">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
-                    </div>
-                    <div class="col-6 d-flex justify-content-end">
-                        <div>
-                            <span class="events__button-date button d-flex align-items-center w-60"><img
-                                    src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                    class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                    <div class="col-10 offset-1 col-lg-6 offset-lg-0 bg-white rounded">
+                        <div class="row p-5 h-100">
+                            <div class="col-6">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_onas.png" />
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <div>
+                                    <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-5">
+                                <h2 class="header events__header-box"><?php the_title(); ?></h2>
+                                <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10);  ?></p>
+                            </div>
+                            <div class="col-6 mt-5">
+                                <a href=""><button class="events__button-check">Sprawdź</button></a>
+                            </div>
+                            <div class="col-6 mt-5 d-flex justify-content-end">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 mt-5">
-                        <h2 class="header events__header-box"><?php the_title(); ?></h2>
-                        <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10);  ?></p>
-                    </div>
-                    <div class="col-6 mt-5">
-                        <a href=""><button class="events__button-check">Sprawdź</button></a>
-                    </div>
-                    <div class="col-6 mt-5 d-flex justify-content-end">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
-                    </div>
-                </div>
-            </div>
-            <?php
+                    <?php
                 } else {
 
                     if ($counter == 2) { ?>
-            <div class="col-6">
-                <div class="col-12">
+                        <div class="col-10 offset-1 col-lg-6 offset-lg-0 mt-3 mt-lg-0">
+                            <div class="col-12 pl-0 pr-0 pl-lg-3">
+                            <?php } ?>
 
-                    <?php } ?>
-
-                    <div class="row bg-white p-5 <?php if ($counter === 3) {
-                                                                echo 'mt-5';
-                                                            } ?>">
-                        <div class="col-6">
-                            <h2 class="header events__header-box">
-                                <?php the_title(); ?>
-                            </h2>
-                        </div>
-                        <div class="col-6 d-flex justify-content-end">
-                            <div>
-                                <span class="events__button-date button d-flex align-items-center w-60"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg"
-                                        class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                            <div class="row bg-white p-5 mt-3 mt-lg-0 <?php if ($counter === 3) {
+                                                                            echo 'mt-lg-5';
+                                                                        } ?>">
+                                <div class="col-6">
+                                    <h2 class="header events__header-box">
+                                        <?php the_title(); ?>
+                                    </h2>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <div>
+                                        <span class="events__button-date button d-flex align-items-center w-60"><img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz_events.svg" class="mr-2" width="15" /><?php the_field('event_date_start'); ?></span>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-4">
+                                    <a href=""><button class="events__button-check">Sprawdź</button></a>
+                                </div>
+                                <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
                             </div>
-                        </div>
-                        <div class="col-6 mt-4">
-                            <a href=""><button class="events__button-check">Sprawdź</button></a>
-                        </div>
-                        <div class="col-6 mt-4 d-flex justify-content-end"><img
-                                src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
-                    </div>
-                    <?php
+                        <?php
                     }
                         ?>
-                    <?php if ($counter == $total) { ?>
-                </div>
-            </div>
-            <?php } ?>
+                        <?php if ($counter == $total) { ?>
+                            </div>
+                        </div>
+                    <?php } ?>
 
-            <?php
+                <?php
             }
             wp_reset_query();
                 ?>
@@ -240,7 +233,7 @@ defined('ABSPATH') || exit;
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <a href=""><button class="button events__button-all-events">Wszystkie eventy</button></a>
+                <a href="/eventy"><button class="button events__button-all-events">Wszystkie eventy</button></a>
             </div>
         </div>
     </div>
@@ -251,19 +244,17 @@ defined('ABSPATH') || exit;
             <div class="col-12 text-center">
                 <h2 class="header sponsors-carousel__header">Nasi sponsorzy:</h2>
             </div>
-            <div class="col-12 pl-0">
+            <div class="col-10 offset-1 col-lg-12 offset-lg-0 pl-0">
                 <div class="sponsors-carousel__owl owl-carousel owl-theme owl-loaded bg-white">
                     <div class="owl-stage-outer">
-                        <div class="owl-stage">
+                        <div class="owl-stage m-auto">
                             <?php
                             $sponsors = get_field('carousel_sponsors');
                             foreach ($sponsors as $sponsor) {
                             ?>
-                            <div class="owl-item">
-                                <a href="<?php echo $sponsor['link']; ?>"><img
-                                        src="<?php echo $sponsor['sponsor']['url']; ?>" class="sponsors-carousel__img"
-                                        alt="<?php echo $sponsor['sponsor']['alt']; ?>" /></a>
-                            </div>
+                                <div class="owl-item">
+                                    <a href="<?php echo $sponsor['link']; ?>"><img src="<?php echo $sponsor['sponsor']['url']; ?>" class="sponsors-carousel__img" alt="<?php echo $sponsor['sponsor']['alt']; ?>" /></a>
+                                </div>
                             <?php            }
                             ?>
                         </div>
