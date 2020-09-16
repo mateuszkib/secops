@@ -15,7 +15,7 @@ get_header();
 
 ?>
 
-<div class="container-fluid position-relative">
+<div class="container-fluid position-relative" style="max-width: 1920px;">
     <div class="w-100">
         <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" style="right: 0; top: 32%;" />
     </div>
@@ -69,7 +69,7 @@ get_header();
                 <h2 class="header community__header-left" data-target="collapse-third"><span class="header community__header-left-span">03</span> Patronite</h2>
 
             </div>
-            <div class="col-10 offset-1 col-lg-3 offset-lg-1">
+            <div class="community__description-container col-10 offset-1 col-lg-3 offset-lg-1">
                 <div class="community-section my-collapse collapse-first our_community">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/ikona_nasza_spolecznosc.svg" />
                     <h3 class="header community__header-right">Nasza społeczność</h3>

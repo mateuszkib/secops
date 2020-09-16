@@ -15,9 +15,6 @@ defined('ABSPATH') || exit;
 get_header();
 $aboutUsPageID = 57;
 ?>
-<div class="bg">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" style="top:30%;" />
-</div>
 <header class="header-bg">
     <div class="home-header" style="color: white;">
         <div class="container-fluid">
@@ -55,14 +52,14 @@ $aboutUsPageID = 57;
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-10 offset-1 col-lg-6 mt-5">
+                <div class="col-10 offset-1 col-lg-6">
                     <div class="home-header__who-bg col-12">
                         <div class="col-6 offset-3">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/ilustracja_kimjestesmy.png" />
                         </div>
                     </div>
                 </div>
-                <div class="col-10 offset-1 col-lg-3 offset-lg-0 mt-5">
+                <div class="col-10 offset-1 col-lg-3 offset-lg-0 mt-3 mt-md-0">
                     <h2 class="header home-header__who-header">
                         <?php (get_field('who_title') ? the_field('who_title') : "");  ?>
                     </h2>
@@ -77,21 +74,22 @@ $aboutUsPageID = 57;
         </div>
     </div>
 </header>
-<!--<section class="news">
+<div class="bg">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/bg.png" class="position-absolute" />
+</div>
+<section class="news">
     <div class="container">
         <div class="row">
             <div class="col-10 offset-1 col-lg-4 offset-lg-0">
                 <h2 class="header news__header">Aktualności</h2>
                 <p class="news__paragraph">
-                    <?php //the_field('news_text'); 
-                    ?>
+                    <?php the_field('news_text'); ?>
                 </p>
-                <?php //echo get_field('news_button') ? the_field('news_button') : '<a href="https://www.facebook.com/SecOpsPolska/"><button class="button news__button mt-0 mb-5">Wszystkie aktualności</button></a>'; 
-                ?>
+                <?php echo get_field('news_button') ? the_field('news_button') : '<a href="https://www.facebook.com/SecOpsPolska/"><button class="button news__button mt-0 mb-5">Wszystkie aktualności</button></a>'; ?>
             </div>
 
             <?php
-            /*
+
             $newsHomePage = new WP_Query([
                 'post_type' => 'post',
                 'posts_per_page' => 2,
@@ -99,41 +97,33 @@ $aboutUsPageID = 57;
 
             while ($newsHomePage->have_posts()) {
                 $newsHomePage->the_post();
-            */
             ?>
-            <div class="col-lg-4 mt-3" style="max-height: 518px;">
-                <div class="card" style="height: 100%;">
-                    <img src="<?php //the_post_thumbnail_url(); 
-                                ?>" class="news__img-card card-img-top" width="300"
-                        height="250" />
-                    <div class="card-body">
-                        <h5 class="header card-title"><?php //echo wp_trim_words(get_the_title(), 10); 
-                                                        ?></h5>
-                        <p class="card-text"><?php //echo wp_trim_words(get_the_content(), 7); 
-                                                ?></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <img src="<?php //echo get_template_directory_uri(); 
-                                            ?>/images/kalendarz.svg"
-                                    width="20" /><span class="card__date"><?php //the_time('d.m.Y'); 
-                                                                            ?></span>
+                <div class="col-lg-4 mt-3" style="max-height: 518px;">
+                    <div class="card" style="height: 100%;">
+                        <img src="<?php the_post_thumbnail_url(); ?>" class="news__img-card card-img-top" width="300" height="250" />
+                        <div class="card-body">
+                            <h5 class="header card-title"><?php echo wp_trim_words(get_the_title(), 10); ?></h5>
+                            <p class="card-text"><?php echo wp_trim_words(get_the_content(), 7); ?></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/images/kalendarz.svg" width="20" /><span class="card__date"><?php the_time('d.m.Y'); ?></span>
+                                </div>
+                                <span class="card__author"><?php echo get_avatar(get_the_author_email(), '20');
+                                                            the_author_posts_link(); ?></span>
                             </div>
-                            <span class="card__author"><?php /*echo get_avatar(get_the_author_email(), '20');
-                                                            the_author_posts_link(); */ ?></span>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
             <?php
-            /*}
-            wp_reset_postdata();*/
+            }
+            wp_reset_postdata();
             ?>
 
         </div>
     </div>
-</section>-->
+</section>
 <section class="events">
     <div class="container">
         <div class="row">
@@ -193,7 +183,7 @@ $aboutUsPageID = 57;
                                 <p class="events__content-box-big"><?php echo wp_trim_words(get_the_content(), 10);  ?></p>
                             </div>
                             <div class="col-6 mt-5">
-                                <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                <a href=""><button class="events__button-check">Sprawdź</button></a>
                             </div>
                             <div class="col-6 mt-5 d-flex justify-content-end">
                                 <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
@@ -222,7 +212,7 @@ $aboutUsPageID = 57;
                                     </div>
                                 </div>
                                 <div class="col-6 mt-4">
-                                    <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                    <a href=""><button class="events__button-check">Sprawdź</button></a>
                                 </div>
                                 <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" /></div>
                             </div>
@@ -263,7 +253,7 @@ $aboutUsPageID = 57;
                             foreach ($sponsors as $sponsor) {
                             ?>
                                 <div class="owl-item">
-                                    <a href="<?php echo $sponsor['link']; ?>" target="_blank"><img src="<?php echo $sponsor['sponsor']['url']; ?>" class="sponsors-carousel__img" alt="<?php echo $sponsor['sponsor']['alt']; ?>" /></a>
+                                    <a href="<?php echo $sponsor['link']; ?>"><img src="<?php echo $sponsor['sponsor']['url']; ?>" class="sponsors-carousel__img" alt="<?php echo $sponsor['sponsor']['alt']; ?>" /></a>
                                 </div>
                             <?php            }
                             ?>

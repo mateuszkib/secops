@@ -117,7 +117,7 @@ body {
 .current-jobs-offers,
 .our-speakers,
 .events-films {
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
 .input-container {
@@ -185,7 +185,7 @@ body {
 /* NAVBAR SCSS */
 #wrapper-navbar {
 	height: 96px;
-	padding-top: 96px;
+	padding-top: 40px;
 
 	#main-nav {
 		.container-fluid {
@@ -249,6 +249,10 @@ body {
 
 .home-header {
 	padding-top: 150px;
+
+	@include media-breakpoint-down(md) {
+		padding-top: 20px;
+	}
 
 	&__title {
 		font-size: 195px;
@@ -621,6 +625,10 @@ body {
 	margin-top: 100px;
 	color: $white;
 
+	@include media-breakpoint-down(sm) {
+		text-align: center;
+	}
+
 	.widget-title {
 		@include addFontPoppins();
 		font-weight: bold;
@@ -660,7 +668,7 @@ body {
 	}
 
 	&__first-column-paragraph {
-		margin-top: 90px;
+		margin-top: 40px;
 		color: $primary-text;
 		line-height: 32px;
 	}
@@ -756,6 +764,10 @@ body {
 		line-height: 40px;
 		color: $white;
 		margin: 42px 0 24px 0;
+	}
+
+	&__description-container {
+		height: 360px;
 	}
 
 	&__desc-right {

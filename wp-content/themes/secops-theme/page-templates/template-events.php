@@ -125,19 +125,19 @@ function getCityID($parametr)
                     <a href="<?php echo $current_url . '?currentCity=' . ($_GET['currentCity'] ? $_GET['currentCity'] : 'online') . '&paged1=' . paginateEventsArrows('right', $page) . '#current-events'; ?>" class="arrow-right position-absolute"><img src="<?php echo get_template_directory_uri(); ?>/images/arrow-right.svg" /></a>
                 <?php }
                 ?>
-                <div class="col-12 text-center mb-4">
+                <div class="col-12 text-center">
                     <h2 class="header events-page__header">Aktualne MeetUpy</h2>
                 </div>
 
-                <!--<div class="col-12 mt-5">
+                <div class="col-12 mt-5">
                     <div class="events-page__city-list-container">
                         <ul class="events-page__list-group d-flex align-items-center justify-content-center flex-wrap">
                             <?php
-                            //echo displayLocations('currentCity');
+                            echo displayLocations('currentCity');
                             ?>
                         </ul>
                     </div>
-                </div> -->
+                </div>
                 <!-- CURRENT MEETUPS -->
                 <?php
                 $counter = 0;
@@ -166,7 +166,7 @@ function getCityID($parametr)
                                         </p>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href="<?php the_field('event_link'); ?>"><button class="events__button-check">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end">
                                         <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
@@ -187,7 +187,7 @@ function getCityID($parametr)
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
                                     </div>
@@ -209,7 +209,7 @@ function getCityID($parametr)
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
                                     </div>
@@ -230,7 +230,7 @@ function getCityID($parametr)
                                         </p>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end">
                                         <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_szary.svg" />
@@ -263,7 +263,7 @@ function getCityID($parametr)
                     'posts_per_page' => 4,
                     'orderby' => 'meta_value_num',
                     'meta_key' => 'event_date_start',
-                    'order' => 'DESC',
+                    'order' => 'ASC',
                     'paged' => $_GET['paged2'] ? $_GET['paged2'] : 1,
                     'meta_query' => array(
                         array(
@@ -294,16 +294,15 @@ function getCityID($parametr)
 
 
                 <div class="col-12 text-center">
-                    <h2 class="header events-page__header mb-4">Przeszłe MeetUpy</h2>
+                    <h2 class="header events-page__header">Przeszłe MeetUpy</h2>
                 </div>
-                <!--<div class="col-12 mt-5">
+                <div class="col-12 mt-5">
                     <div class="events-page__city-list-container">
                         <ul class="events-page__list-group d-flex align-items-center justify-content-center flex-wrap">
-                            <?php //echo displayLocations('pastCity'); 
-                            ?>
+                            <?php echo displayLocations('pastCity'); ?>
                         </ul>
                     </div>
-                </div> -->
+                </div>
 
                 <?php
 
@@ -333,7 +332,7 @@ function getCityID($parametr)
                                             <?php echo wp_trim_words(get_the_content(), 10); ?></p>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end">
                                         <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
@@ -354,7 +353,7 @@ function getCityID($parametr)
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
                                 </div>
@@ -379,7 +378,7 @@ function getCityID($parametr)
                                             <?php echo wp_trim_words(get_the_content(), 10); ?></p>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end">
                                         <img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" />
@@ -398,7 +397,7 @@ function getCityID($parametr)
                                         </div>
                                     </div>
                                     <div class="col-6 mt-4">
-                                        <a href="<?php the_field('event_link'); ?>" target="_blank"><button class="events__button-check">Sprawdź</button></a>
+                                        <a href=""><button class="events__button-check events-page__past--button-bg">Sprawdź</button></a>
                                     </div>
                                     <div class="col-6 mt-4 d-flex justify-content-end"><img src="<?php echo get_template_directory_uri(); ?>/images/sygnet_fiolet.svg" /></div>
                                 </div>

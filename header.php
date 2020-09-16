@@ -31,18 +31,18 @@ $container = get_theme_mod('understrap_container_type');
 
 			<a class="skip-link sr-only sr-only-focusable" href="#content"><?php esc_html_e('Skip to content', 'understrap'); ?></a>
 
-			<nav id="main-nav" class="navbar navbar-expand-lg" aria-labelledby="main-nav-label">
+			<nav id="main-nav" class="navbar navbar-expand-lg navbar-dark" aria-labelledby="main-nav-label">
 
 				<h2 id="main-nav-label" class="sr-only">
 					<?php esc_html_e('Main Navigation', 'understrap'); ?>
 				</h2>
 
-				<div class="container-fluid">
+				<div class="container-fluid position-relative">
 					<div class="row align-items-center w-100">
 
 						<div class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-1 offset-lg-1">
 							<div class="logo-nav">
-								<img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="SecOps Logo" />
+								<a href="<?php echo get_home_url(); ?>"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/images/Logo.png" alt="SecOps Logo" /></a>
 							</div>
 						</div>
 
@@ -63,17 +63,17 @@ $container = get_theme_mod('understrap_container_type');
 							);
 							?>
 						</div>
-						<div class="col-2 d-md-none d-sm-none d-lg-block">
+						<div class="col-2 d-lg-block">
 							<div class="social-media-nav w-100 d-flex justify-content-around">
-								<a href=""><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_facebook-square.svg" /></a>
-								<a href=""><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_youtube-square.svg" /></a>
-								<a href=""><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_linkedin-square.svg" /></a>
+								<a href="https://www.facebook.com/SecOpsPolska/" target="_blank"><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_facebook-square.svg" /></a>
+								<a href="https://www.youtube.com/c/SecOpsPolska" target="_blank"><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_youtube-square.svg" /></a>
+								<a href="https://www.linkedin.com/company/secopspolska/" target="_blank"><img src="<?php echo get_bloginfo('template_directory'); ?>/images/jam_linkedin-square.svg" /></a>
 							</div>
 						</div>
-						<div class="col-2 col-lg-1 d-sm-none d-lg-block language-flag-nav">
+						<div class="col-2 col-lg-1 language-flag-nav">
 							<?php echo do_shortcode('[gtranslate]'); ?>
 						</div>
-						<button class="ml-auto navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'understrap'); ?>">
+						<button class="ml-auto navbar-toggler position-absolute" style="right: 0%;" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'understrap'); ?>">
 							<span class="navbar-toggler-icon text-white"></span>
 						</button>
 					</div>
